@@ -6,13 +6,16 @@
 
 On your local environment ensure you have installed:
 
-* Git
-	brew install git
+Git
 
-* NodeJs	
+	brew install git	
+
+NodeJs
+
 	brew install node
 
-* Nodemon	
+Nodemon
+
 	npm install nodemon
 
 Clone repository using git string, not https url. (...git what? when in doubt go to http://rogerdudler.github.io/git-guide/)
@@ -22,11 +25,14 @@ Dependencies are handled in package.json. To install additional packages locally
 
 <h2>How to start the appliation?</h2>
  
-* Production
+ Production
+ 
 	npm start
 
-* Development
+Development
+	
 	npm run-script dev
 
-* Tests
+Tests
+
 	npm run-script test
