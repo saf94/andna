@@ -18,6 +18,10 @@ Nodemon
 
 	npm install nodemon
 
+MongoDB
+
+	brew install mongodb
+
 Clone repository using git string, not https url. (...git what? when in doubt go to http://rogerdudler.github.io/git-guide/)
 Dependencies are handled in package.json. To install additional packages locally run: 
 		
