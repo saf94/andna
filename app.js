@@ -16,6 +16,11 @@ MongoClient.connect(url, function(err, db) {
   dbo.createCollection("profiles", function(err, res) {
     if (err) throw err;
     console.log("Collection created!");
-    db.close();
+  });
+
+  dbo.collection("profiles").insertOne({ username: "shayat@and.digital", name: "Saf Hayat"}, function(err, res) {
+    if (err) throw err;
+    console.log("1 document inserted");
+    db.close();    
   });
 }); 
