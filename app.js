@@ -1,3 +1,4 @@
+/*
 const http = require('http');
 const express = require('express');
 const app = express();
@@ -38,3 +39,5 @@ MongoClient.connect(url, function(err, db) {
     db.close();    
   });
 }); 
+
+*/
