@@ -1,8 +1,79 @@
+@font-face {
+  font-family: Poppins;
+  src: url(/fonts/Poppins-Medium.ttf);
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: Poppins;
+  font-size: 22px;
 }
 
 a {
   color: #00B7FF;
+}
+
+.bg-2 {
+  background-color: #ec4746;
+  /* Dark Blue */
+  color: #ffffff;
+}
+
+.bg-3 {
+  background-color: #ffffff;
+  /* White */
+  color: #555555;
+}
+
+.myProfile {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.jenkins {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+.jumbotron-billboard .img {
+  margin-bottom: 0px;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+.jumbotron h2 {
+  margin-top: 0;
+}
+
+.jumbotron {
+  position: relative;
+  padding-top: 200px;
+  padding-bottom: 200px;
+}
+
+.jumbotron .container {
+  position: relative;
+  z-index: 2;
+}
+
+.sectionBackground {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .jumbotron {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  
 }
