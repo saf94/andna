@@ -1,28 +1,186 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<head>
+	<title>AND Digital - BioBusters</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="KJ">
+	<meta http-equiv="refresh" content="30">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="ANDcustom.css">
+	<style>
+		.bg-2 {
+			background-color: #ec4746;
+			/* Dark Blue */
+			color: #ffffff;
+		}
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <h1>Teamwork makes the dream work</h1>
-    
-    <form action="/uploadpicture" method="POST" enctype="multipart/form-data">
+		.bg-3 {
+			background-color: #ffffff;
+			/* White */
+			color: #555555;
+		}
+
+		.myProfile {
+			text-align: center;
+			padding-bottom: 20px;
+		}
+
+		.jenkins {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.jumbotron-billboard .img {
+			margin-bottom: 0px;
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+			overflow: hidden;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
+			width: 100%;
+		}
+
+		.jumbotron h2 {
+			margin-top: 0;
+		}
+
+		.jumbotron {
+			position: relative;
+			padding-top: 200px;
+			padding-bottom: 200px;
+		}
+
+		.jumbotron .container {
+			position: relative;
+			z-index: 2;
+		}
+
+		@media screen and (max-width: 768px) {
+			.jumbotron {
+				padding-top: 60px;
+				padding-bottom: 60px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#"></a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a href="#">Bio</a>
+					</li>
+					<li>
+						<a href="#">Squads</a>
+					</li>
+					<li>
+						<a href="#">FAQ</a>
+					</li>
+				</ul>
+				<form class="navbar-form navbar-left" action="/action_page.php">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search">
+						<div class="input-group-btn">
+							<button class="btn btn-default" type="submit">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</nav>
+	</header>
+
+	<section>
+		<div class="jumbotron jumbotron-billboard">
+			<div class="img">
+				<img src="images/ANDback.png" alt="Palm Trees"> </div>
+			<div class="container">
+				<div class="row">
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- <form action="/uploadpicture" method="POST" enctype="multipart/form-data">
         <h1>test</h1>
         <input type="file" name="picture" accept="application/x-zip-compressed,image/*">
         <input class="form-control" type="text" name="description" placeholder="Description or Message">
         <input class="btn btn-primary" type="submit" value="submit">
-        </form>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-  </body>
+    </form> -->
+
+	<!--<section>
+            <div class="container-fluid bg-2 text-center">
+                <h3>Welcome to AND profiles!</h3>
+                <h4>Here you can review and update your profile to have all your skills and reflected and make a great first impression with clients!</h4>
+            </div>
+        </section> -->
+
+	<section>
+		<div class="container">
+			<h3 class="myProfile">My profile</h3>
+			<div>
+				<img src="images/jenkins.png" alt="Mr Jenkins" height="150" width="150" class="jenkins">
+			</div>
+			<h4>Personal info:</h4>
+			<form action="/action_page.php">
+				<div class="form-group">
+					<label for="email">Full name:</label>
+					<input type="name" class="form-control" id="name" placeholder="First name + last name" name="name">
+				</div>
+				<div class="form-group">
+					<label for="title">Title</label>
+					<input type="title" class="form-control" id="title" placeholder="Your title (Associate/PA/PD)" name="title">
+				</div>
+				<div class="form-group">
+					<label for="LinkedIn">LinkedIn</label>
+					<input type="LinkedIn" class="form-control" id="LinkedIn" placeholder="Enter your LinkedIn URL" name="LinkedIn">
+				</div>
+				<div class="form-group">
+					<label for="pwd">Summary</label>
+					<input type="Summary" class="form-control" id="Summary" placeholder="Enter a short and snappy summary" name="Summary">
+				</div>
+	</section>
+
+	<section>
+		<div class="container">
+			<h4>Experiences:</h4>
+			<form action="/action_page.php">
+				<div class="form-group">
+					<label for="email">Role:</label>
+					<input type="role" class="form-control" id="role" placeholder="Scrum master/PA/PD" name="role">
+				</div>
+				<div class="form-group">
+					<label for="title">Location</label>
+					<input type="location" class="form-control" id="location" placeholder="E.g. Avios/Halfords/BA" name="location">
+				</div>
+				<div class="form-group">
+					<label for="LinkedIn">Summary</label>
+					<input type="roleSummary" class="form-control" id="roleSummary" placeholder="Summary of responsibilities" name="roleSummary">
+				</div>
+	</section>
+	<!--<div class="checkbox">
+                    <label><input type="checkbox" name="remember"> Remember me</label>
+                  </div>
+                  <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+              </div> -->
+</body>
+
 </html>
