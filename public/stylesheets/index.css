@@ -68,13 +68,29 @@ a {
   background-color: #f9f9f9;
   padding: 20px;
   margin-bottom: 20px;
+  border-radius: 15px;
 }
 
 #deleteExp {
   margin-top: 15px;
   height: 20px;
   line-height: 10px;
+  background-color: #fff;
+  color: #fc3543;
+  border-color: #fc3543;
+  border-radius: 15%;
+  text-align: center;
 }
+
+#addExp {
+  background-color: #3199fc;
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 40px;
+  padding: 6px;
+  border-radius: 15%;
+}
+
 
 @media screen and (max-width: 768px) {
   .jumbotron {
