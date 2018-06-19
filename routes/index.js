@@ -66,4 +66,4 @@ var filename = req.params.picture;
    });
 });
 
-router.get('/bio', function(req, res){ res.sendFile(path.join('/Users/shayat/Documents/programming/ANDNA//public/bio.html')); });
+router.get('/bio', function(req, res){ res.sendFile(path.join(__dirname, '../public/bio.html')); });
