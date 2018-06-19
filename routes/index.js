@@ -8,6 +8,8 @@ express = require('express')
    , util = require('util')
    , upload = multer({limits: {fileSize: 2000000 },dest:'uploads/'}) 
 
+   var path = require('path');
+
 module.exports = router;
 
 // Default route http://localhost:3000/
@@ -63,3 +65,5 @@ var filename = req.params.picture;
       });
    });
 });
+
+router.get('/bio', function(req, res){ res.sendFile(path.join(__dirname, '../public/bio.html')); });
