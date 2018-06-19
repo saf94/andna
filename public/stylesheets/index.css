@@ -5,7 +5,7 @@
 
 body {
   font-family: Poppins;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 a {
@@ -67,7 +67,7 @@ a {
 .sectionBackground {
   background-color: #f9f9f9;
   padding: 20px;
-  margin: 10px;
+  margin-bottom: 20px;
 }
 
 @media screen and (max-width: 768px) {
