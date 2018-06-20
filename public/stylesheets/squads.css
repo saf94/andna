@@ -45,6 +45,11 @@ button {
       letter-spacing: 0.5px;
       text-align: center;
       color: #ffffff;
-      background-color:  #273041 ;
+      background-color: #273041  ;
+      /* #273041 */
       padding: 3px 15px;
+}
+button:disabled {
+    background-color: #a5a8ae;
+    color: white;
 }
