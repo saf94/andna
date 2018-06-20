@@ -19,7 +19,7 @@ fs.readFile('client_secret.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
   // Authorize a client with credentials, then call the Google Slides API.
   authorize(JSON.parse(content), gapiDrive);
-  authorize(JSON.parse(content), gapiSlides);
+//  authorize(JSON.parse(content), gapiSlides);
 });
 
 /**
@@ -77,59 +77,64 @@ function getNewToken(oAuth2Client, callback) {
 // BEGINNING OF SCRIPTS SECTION
 
 var presentationCopyId;
+var fileId = '17kQGK9rBRDTYrzk2s4L-nA1qXUt4htg-UGgNoSBiAj0'
 
 function gapiDrive(auth) {
     const drive = google.drive({version: 'v3', auth});
     drive.files.copy({
-        fileId: '17kQGK9rBRDTYrzk2s4L-nA1qXUt4htg-UGgNoSBiAj0'
-        // resource: request
+        fileId: fileId
     }, (err, driveResponse) => {
         if (err) return console.log('The API returned an error: ' + err);
-            console.log(`Copied presentation with ID ${fileId} to presentation with ID ${driveResponse}`)
-            presentationCopyId = driveResponse.id;
-        });
-}
+        console.log(`Copied presentation with ID ${fileId} to presentation with ID ${driveResponse.data.id}`)
+        presentationCopyId = driveResponse.data.id;
 
-function gapiSlides(auth) {
-    const slides = google.slides({version: 'v1', auth});
 
-    // Define what to subsitute
+        fs.readFile('client_secret.json', (err, content) => {
+            if (err) return console.log('Error loading client secret file:', err);
+            // Authorize a client with credentials, then call the Google Slides API.
+            authorize(JSON.parse(content), gapiSlides);
+          });
 
-    var requests = [{
-        replaceAllText: {
-        containsText: {
-            text: '{name}',
-            matchCase: true
-        },
-        replaceText: 'Bob'
+        function gapiSlides(auth) {
+            const slides = google.slides({version: 'v1', auth});
+        
+            // Define what to subsitute
+        
+            var requests = [{
+                replaceAllText: {
+                containsText: {
+                    text: '{name}',
+                    matchCase: true
+                },
+                replaceText: 'Bob'
+                }
+            }, {
+                replaceAllText: {
+                containsText: {
+                    text: '{surname}',
+                    matchCase: true
+                },
+                replaceText: 'Jones'
+                }
+            }];
+        
+            // Execute the requests for this presentation.
+            slides.presentations.batchUpdate({
+                presentationId: presentationCopyId,
+                    resource: {
+                    requests: requests
+                    }
+                }, (err, batchUpdateResponse) => {
+                    if (err) return console.log('The API returned an error: ' + err);
+                    var result = batchUpdateResponse;
+                    // Count the total number of replacements made.
+                    var numReplacements = 0;
+                    for (var i = 0; i < result.replies.length; ++i) {
+                    numReplacements += result.replies[i].replaceAllText.occurrencesChanged;
+                    }
+                    console.log(`Created presentation for ${customerName} with ID: ${presentationCopyId}`);
+                    console.log(`Replaced ${numReplacements} text instances`);
+            });    
         }
-    }, {
-        replaceAllText: {
-        containsText: {
-            text: '{surname}',
-            matchCase: true
-        },
-        replaceText: 'Jones'
-        }
-    }];
-
-    // Execute the requests for this presentation.
-    slides.presentations.batchUpdate({
-        presentationId: presentationCopyId,
-            resource: {
-            requests: requests
-            }
-        }, (err, batchUpdateResponse) => {
-            if (err) return console.log('The API returned an error: ' + err);
-            var result = batchUpdateResponse;
-            // Count the total number of replacements made.
-            var numReplacements = 0;
-            for (var i = 0; i < result.replies.length; ++i) {
-            numReplacements += result.replies[i].replaceAllText.occurrencesChanged;
-            }
-            console.log(`Created presentation for ${customerName} with ID: ${presentationCopyId}`);
-            console.log(`Replaced ${numReplacements} text instances`);
-
-
     });
 }
