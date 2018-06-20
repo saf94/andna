@@ -67,3 +67,4 @@ var filename = req.params.picture;
 });
 
 router.get('/bio', function(req, res){ res.sendFile(path.join(__dirname, '../public/bio.html')); });
+router.get('/form', function(req, res){ res.sendFile(path.join(__dirname, '../public/forms.html')); });
