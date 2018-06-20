@@ -110,7 +110,25 @@
 
 				<button type="button" id="addExp">Add</button>
 
-
+			<div id="keySkills">
+				<section class="sectionBackground" id="keySkills">
+					<h4>Key Skills:</h4>
+						<div class="autocomplete form-group">
+							<input class="form-control" id="myInput" type="text">
+							<div class="skillsHolder" id="skillz">
+							</div>
+					  	</div>
+				</section>
+			</div>
+			
+			<div id="tools">
+					<section class="sectionBackground" id="tools">
+						<h4>Tools:</h4>
+							<div class="form-group autocomplete">
+								<input class="form-control" id="myInput" type="text">
+							</div>
+					</section>
+				</div>
 		</form>
 		</div>
 
@@ -126,7 +144,9 @@
                   </div>
                   <button type="submit" class="btn btn-default">Submit</button>
                 </form>
-              </div> -->
+			  </div> -->
+
+		<script>autocomplete(document.getElementById("myInput"), skills);</script>
 </body>
 
 </html>
