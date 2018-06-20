@@ -83,3 +83,13 @@ router.get("/bio", function(req, res) {
 router.get("/form", function(req, res) {
   res.sendFile(path.join(__dirname, "../public/forms.html"));
 });
+
+router.post("/formSubmit", function(req, res) {
+  res.send(req.body);
+  MongoClient.connect(
+    url,
+    function(err, db) {
+      db.collection("profiles").insert(req.body);
+    }
+  );
+});
