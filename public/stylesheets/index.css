@@ -57,23 +57,90 @@ a {
   position: relative;
   padding-top: 200px;
   padding-bottom: 200px;
+  background-image: url('https://s3-eu-west-1.amazonaws.com/and-welcome-dev-bucket/Kingfisher.jpeg');
+  background-repeat: no-repeat;
+  height: 470px;
+  object-fit: none;
 }
 
 .jumbotron .container {
   position: relative;
   z-index: 2;
+  
+}
+
+.jumbotron > .container {
+  text-align: center;
+}
+
+.jumbotron > .container > h2 {
+  font-size: 72px;
+  color: white;
 }
 
 .sectionBackground {
   background-color: #f9f9f9;
   padding: 20px;
   margin-bottom: 20px;
+  border-radius: 15px;
 }
 
 #deleteExp {
   margin-top: 15px;
   height: 20px;
   line-height: 10px;
+  background-color: #fff;
+  color: #FFC800;
+  border-color: #FFC800;
+  border-radius: 15%;
+  text-align: center;
+}
+
+#addExp {
+  background-color: #FFC800;
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 40px;
+  padding: 6px;
+  border-radius: 15%;
+}
+
+#imageForm {
+  display: flex;
+  justify-content: center;
+}
+
+input[type=file] {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+form > label {
+  background-image: url('../images/Jenkins.png');
+  padding: 85px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#imageSubmit {
+  margin: 80px 0px;
+}
+
+label > span {
+  visibility: hidden;
+}
+
+#AndLogo {
+  width: 350px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  margin-top: -80px;
 }
 
 @media screen and (max-width: 768px) {
