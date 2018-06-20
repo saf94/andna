@@ -1,0 +1,152 @@
+@font-face {
+  font-family: Poppins;
+  src: url(/fonts/Poppins-Medium.ttf);
+}
+
+body {
+  font-family: Poppins;
+  font-size: 20px;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.bg-2 {
+  background-color: #ec4746;
+  /* Dark Blue */
+  color: #ffffff;
+}
+
+.bg-3 {
+  background-color: #ffffff;
+  /* White */
+  color: #555555;
+}
+
+.myProfile {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.jenkins {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+.jumbotron-billboard .img {
+  margin-bottom: 0px;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+.jumbotron h2 {
+  margin-top: 0;
+}
+
+.jumbotron {
+  position: relative;
+  padding-top: 200px;
+  padding-bottom: 200px;
+  background-image: url('https://s3-eu-west-1.amazonaws.com/and-welcome-dev-bucket/Kingfisher.jpeg');
+  background-repeat: no-repeat;
+  height: 470px;
+  object-fit: none;
+}
+
+.jumbotron .container {
+  position: relative;
+  z-index: 2;
+  
+}
+
+.jumbotron > .container {
+  text-align: center;
+}
+
+.jumbotron > .container > h2 {
+  font-size: 72px;
+  color: white;
+}
+
+.sectionBackground {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+
+#deleteExp {
+  margin-top: 15px;
+  height: 20px;
+  line-height: 10px;
+  background-color: #fff;
+  color: #FFC800;
+  border-color: #FFC800;
+  border-radius: 15%;
+  text-align: center;
+}
+
+#addExp {
+  background-color: #FFC800;
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 40px;
+  padding: 6px;
+  border-radius: 15%;
+}
+
+#imageForm {
+  display: flex;
+  justify-content: center;
+}
+
+input[type=file] {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+form > label {
+  background-image: url('../images/Jenkins.png');
+  padding: 85px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#imageSubmit {
+  margin: 80px 0px;
+}
+
+label > span {
+  visibility: hidden;
+}
+
+#AndLogo {
+  width: 350px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  margin-top: -80px;
+}
+
+@media screen and (max-width: 768px) {
+  .jumbotron {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  
+}
