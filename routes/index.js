@@ -53,25 +53,28 @@ router.post("/uploadpicture", upload.single("picture"), function(req, res) {
   }
 });
 
-router.get('/picture/:picture', function(req, res){
-// assign the URL parameter to a variable
-const filename = req.params.picture;
-// open the mongodb connection with the connection
-// string stored in the variable called url.
-   MongoClient.connect(url, function(err, db){
-   db.collection('profiles')
-// perform a mongodb search and return only one result.
-// convert the variabvle called filename into a valid
-// objectId.
-     .findOne({'_id': ObjectId(filename)}, function(err, results){
-// set the http response header so the browser knows this
-// is an 'image/jpeg' or 'image/png'
-    res.setHeader('content-type', results.contentType);
-// send only the base64 string stored in the img object
-// buffer element
-         res.send(results.img.buffer);
-      });
-   });
+router.get("/picture/:picture", function(req, res) {
+  // assign the URL parameter to a variable
+  const filename = req.params.picture;
+  // open the mongodb connection with the connection
+  // string stored in the variable called url.
+  MongoClient.connect(
+    url,
+    function(err, db) {
+      db.collection("profiles")
+        // perform a mongodb search and return only one result.
+        // convert the variabvle called filename into a valid
+        // objectId.
+        .findOne({ _id: ObjectId(filename) }, function(err, results) {
+          // set the http response header so the browser knows this
+          // is an 'image/jpeg' or 'image/png'
+          res.setHeader("content-type", results.contentType);
+          // send only the base64 string stored in the img object
+          // buffer element
+          res.send(results.img.buffer);
+        });
+    }
+  );
 });
 
 router.get("/bio", function(req, res) {
@@ -81,12 +84,28 @@ router.get("/form", function(req, res) {
   res.sendFile(path.join(__dirname, "../public/forms.html"));
 });
 
-router.post('/formSubmit', function(req, res) { 
-    let json = `{ "name": ${req.body.name}, "role": ${req.body.title}, "linkedin": ${req.body.LinkedIn}, "summary": ${req.body.Summary}, "Experience": { "Title & Location": ${req.body.role} + ", " + ${req.body.location}, "Role summary": ${req.body.roleSummary} } `
-    let profile = JSON.parse(json);
-    console.log("profile", profile);
-    res.send(req.body); 
-    // MongoClient.connect(url, function(err, db){
-    //     db.collection('profiles').insert(profile)
-    // })
-})
+router.post("/formSubmit", function(req, res) {
+  const profile = {
+    name: req.body.name,
+    role: req.body.title,
+    linkedin: req.body.LinkedIn,
+    summary: req.body.Summary,
+    experience: {
+      titleLocation: `${req.body.role} , ${req.body.location}`,
+      roleSummary: req.body.roleSummary
+    }
+  };
+
+  MongoClient.connect(
+    url,
+    function(err, db) {
+      if (err) console.log(err);
+
+      db.collection("profiles").insert(profile, () => {
+        res.json({ message: "ok" });
+      });
+    }
+  );
+
+  console.log("profile", profile);
+});
