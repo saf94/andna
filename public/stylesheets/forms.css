@@ -201,6 +201,7 @@ button {
   color: #ffffff;
   background-color: #273041;
   padding: 3px 15px;
+  line-height: 5px;
 }
 
 button:disabled {
