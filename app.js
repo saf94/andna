@@ -13,8 +13,12 @@ var logger = require('morgan');
 const bodyParser = require('body-parser')
 >>>>>>> connected form to db and on submit form data saves to db
 
+<<<<<<< HEAD
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+=======
+var indexRouter = require('./routes/index');
+>>>>>>> work in progress
 
 const app = express();
 
@@ -36,8 +40,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
