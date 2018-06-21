@@ -3,308 +3,711 @@
 
 <head>
     <title>101AND Digital - BioBusters</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="./stylesheets/index.css"> -->
     <link rel="stylesheet" href="./stylesheets/squads.css">
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#"></a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="#">Bio</a>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="http://localhost:3000/">
+                <img src="/images/ANDlogo.png" alt="AND Digital logo" height="36">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home
+                        </a>
                     </li>
-                    <li>
-                        <a href="#">Squads</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/squads">Squads
+                            <span class="sr-only">(current)</span>
+                        </a>
                     </li>
-                    <li>
-                        <a href="#">FAQ</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Bio</a>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-left" action="/action_page.php">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit">
-                                <i class="glyphicon glyphicon-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
             </div>
-
         </nav>
     </header>
 
     <section>
         <div class="jumbotron jumbotron-billboard">
-            <div class="img">
-                <img src="images/ANDback.png" alt="Palm Trees"> </div>
             <div class="container">
+                <img src="https://static.andigital.com/wp-content/uploads/2017/05/02163341/AND_LOGO_RGB_ON_WHITE.png" id="AndLogo" />
+                <h2>Squads</h2>
             </div>
         </div>
     </section>
 
-    <div class="col-md-6">
-        <table>
-            <tr>
-                <th colspan="4">
-                    Canyon
-                </th>
-            </tr>
+    <div class="container">
+        <div class="row">
 
-            <tr>
-                <td>Sophie kdjfdlflkds</td>
-                <td>Associate</td>
-                <td>
-                    <button type="button">Preview</button>
-                </td>
-                <td>
-                    <button type="button">Export</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Anita fsfsdfd</td>
-                <td>Associate</td>
-                <td>
-                    <button type="button" disabled>Preview</button>
-                </td>
-                <td>
-                    <button type="button" disabled>Export</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Kris sfdsfdsfdsfsdf</td>
-                <td>DevOps</td>
-                <td>
-                    <button type="button">Preview</button>
-                </td>
-                <td>
-                    <button type="button">Export</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Saf fdsfdfdfsdfsd</td>
-                <td>PD</td>
-                <td>
-                    <button type="button" disabled>Preview</button>
-                </td>
-                <td>
-                    <button type="button" disabled>Export</button>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="col-md-6">
-        <table>
-            <tr>
-                <th colspan="4">
-                    Volcano
-                </th>
-            </tr>
+            <div class="col-sm-12-md-6">
+                <table>
+                    <tr>
+                        <th colspan="4">
+                            Canyon
+                        </th>
+                    </tr>
 
-            <tr>
-                <td>Kully</td>
-                <td>Associate</td>
-                <td>
-                    <button type="button">Preview</button>
-                </td>
-                <td>
-                    <button type="button">Export</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Matt</td>
-                <td>PA</td>
-                <td>
-                    <button type="button">Preview</button>
-                </td>
-                <td>
-                    <button type="button">Export</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Zack</td>
-                <td>PA</td>
-                <td>
-                    <button type="button">Preview</button>
-                </td>
-                <td>
-                    <button type="button">Export</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Teddy</td>
-                <td>Human</td>
-                <td>
-                    <button type="button" disabled>Preview</button>
-                </td>
-                <td>
-                    <button type="button" disabled>Export</button>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="col-md-6">
-        <table>
-            <tr>
-                <th colspan="4">
-                    Jungle
-                </th>
-            </tr>
+                    <tr>
+                        <td>Alex Minssieux</td>
+                        <td>Squad Lead</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Gary Cheung</td>
+                        <td>Product Analyst</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Hao Dong</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Laura Hanna-White</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Namita Narendra Kumar</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nick Russell</td>
+                        <td>Product Analyst</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Olli Drury</td>
+                        <td>Programme Manager</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Prabhjot Kaur</td>
+                        <td>Product Analyst</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ramnath Suthakar</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sophie Anzarouth</td>
+                        <td>Associate</td>
+                        <td>
+                            <button type="button">Preview</button>
+                        </td>
+                        <td>
+                            <button type="button">Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Umar Khan</td>
+                        <td>Product Analyst</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-12-md-6">
+                <table>
+                    <tr>
+                        <th colspan="4">
+                            Volcano
+                        </th>
+                    </tr>
 
-            <tr>
-                <td>Kully</td>
-                <td>Associate</td>
-                <td>
-                    <button type="button" disabled>Preview</button>
-                </td>
-                <td>
-                    <button type="button" disabled>Export</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Matt</td>
-                <td>PA</td>
-                <td>
-                    <button type="button">Preview</button>
-                </td>
-                <td>
-                    <button type="button">Export</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Zack</td>
-                <td>PA</td>
-                <td>
-                    <button type="button">Preview</button>
-                </td>
-                <td>
-                    <button type="button">Export</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Teddy</td>
-                <td>Human</td>
-                <td>
-                    <button type="button">Preview</button>
-                </td>
-                <td>
-                    <button type="button">Export</button>
-                </td>
-            </tr>
-        </table>
+                    <tr>
+                        <td>Andrew Davison</td>
+                        <td>Associate</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Eleanor Crome</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Filipa Bandeira</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Gary Houlihan</td>
+                        <td>Product Analyst</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Iban Munarriz</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>James French</td>
+                        <td>Product Analyst</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Konstantinos Stavrou</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Krishan Damani</td>
+                        <td>Product Analyst</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Matt Archer</td>
+                        <td>Product Analyst</td>
+                        <td>
+                            <button type="button">Preview</button>
+                        </td>
+                        <td>
+                            <button type="button">Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nicholas Platt</td>
+                        <td>Intern</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Safeer Hayat</td>
+                        <td>Associate</td>
+                        <td>
+                            <button type="button">Preview</button>
+                        </td>
+                        <td>
+                            <button type="button">Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Zachary Hall</td>
+                        <td>Associate</td>
+                        <td>
+                            <button type="button">Preview</button>
+                        </td>
+                        <td>
+                            <button type="button">Export</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12-md-6">
+                <table>
+                    <tr>
+                        <th colspan="4">
+                            Jungle
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td>Anita Chan</td>
+                        <td>Associate</td>
+                        <td>
+                            <button type="button">Preview</button>
+                        </td>
+                        <td>
+                            <button type="button">Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Claudia Green</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Davvid Gorczyca</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Emmett Walsh</td>
+                        <td>Associate</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Gajan Satkunanandan</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Hashim Rehman</td>
+                        <td>Intern</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Marcel Thomas</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Melroy Quailey</td>
+                        <td>Solution Architect</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Patrick Blondel</td>
+                        <td>Squad Lead</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Philippa Wisniewski</td>
+                        <td>Associate</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Pontus Ekhem</td>
+                        <td>Associate</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ruairi McVeigh</td>
+                        <td>Product Analyst</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col-sm-12-md-6">
+                <table>
+                    <tr>
+                        <th colspan="4">
+                            Ocean
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td>Artiom Nistrean</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Daniel Rodriguez</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>David Jenkins</td>
+                        <td>Product Analyst</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Evelyn Higgins</td>
+                        <td>Product Analyst</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jacklin Low</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jacob Farrugia</td>
+                        <td>Squad Lead</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jacob Mitchison</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kate Moksina</td>
+                        <td>Associate</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kuldeep Jethwa</td>
+                        <td>Associate</td>
+                        <td>
+                            <button type="button">Preview</button>
+                        </td>
+                        <td>
+                            <button type="button">Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Lucy Peyton</td>
+                        <td>Product Analyst</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Mihai Anghel</td>
+                        <td>Product Analyst</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Richard Merchant</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Severino Gurashi</td>
+                        <td>Associate Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-sm-12-md-6">
+                <table>
+                    <tr>
+                        <th colspan="4">
+                            Oasis
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td>Alex Minssieux</td>
+                        <td>Squad Lead</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Gary Cheung</td>
+                        <td>Product Analyst</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Hao Dong</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Laura Hanna-White</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Namita Narendra Kumar</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nick Russell</td>
+                        <td>Product Analyst</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Olli Drury</td>
+                        <td>Programme Manager</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Prabhjot Kaur</td>
+                        <td>Product Analyst</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ramnath Suthakar</td>
+                        <td>Product Developer</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sophie Anzarouth</td>
+                        <td>Associate</td>
+                        <td>
+                            <button type="button">Preview</button>
+                        </td>
+                        <td>
+                            <button type="button">Export</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Umar Khan</td>
+                        <td>Product Analyst</td>
+                        <td>
+                            <button type="button" disabled>Preview</button>
+                        </td>
+                        <td>
+                            <button type="button" disabled>Export</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div> -->
+    </div>
+    </div>
     </div>
 
-    <div class="col-md-6">
-        <table>
-            <tr>
-                <th colspan="4">
-                    Ocean
-                </th>
-            </tr>
-
-            <tr>
-                <td>Kully</td>
-                <td>Associate</td>
-                <td>
-                    <button type="button">Preview</button>
-                </td>
-                <td>
-                    <button type="button">Export</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Matt</td>
-                <td>PA</td>
-                <td>
-                    <button type="button">Preview</button>
-                </td>
-                <td>
-                    <button type="button">Export</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Zack</td>
-                <td>PA</td>
-                <td>
-                    <button type="button">Preview</button>
-                </td>
-                <td>
-                    <button type="button">Export</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Teddy</td>
-                <td>Human</td>
-                <td>
-                    <button type="button" disabled>Preview</button>
-                </td>
-                <td>
-                    <button type="button" disabled>Export</button>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="col-md-6">
-        <table>
-            <tr>
-                <th colspan="4">
-                    Specialists
-                </th>
-            </tr>
-
-            <tr>
-                <td>Kully</td>
-                <td>Associate</td>
-                <td>
-                    <button type="button">Preview</button>
-                </td>
-                <td>
-                    <button type="button">Export</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Matt</td>
-                <td>PA</td>
-                <td>
-                    <button type="button" >Preview</button>
-                </td>
-                <td>
-                    <button type="button">Export</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Zack</td>
-                <td>PA</td>
-                <td>
-                    <button type="button" disabled>Preview</button>
-                </td>
-                <td>
-                    <button type="button" disabled>Export</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Teddy</td>
-                <td>Human</td>
-                <td>
-                    <button type="button" disabled>Preview</button>
-                </td>
-                <td>
-                    <button type="button" disabled>Export</button>
-                </td>
-            </tr>
-        </table>
-    </div>
-    </div>
-    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
 
 </body>
 

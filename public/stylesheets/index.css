@@ -142,10 +142,10 @@ label > span {
   margin-top: -80px;
 }
 
-#navbarSupportedContent > ul {
+/* #navbarSupportedContent > ul {
   margin-left: 33.5%;
 
-}
+} */
 
 @media screen and (max-width: 768px) {
   .jumbotron {
@@ -154,8 +154,6 @@ label > span {
   }
   
 }
-
-
 
 /* * { box-sizing: border-box; } */
 
