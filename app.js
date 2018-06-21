@@ -11,6 +11,8 @@ const app = express();
 
 const middlewares = [bodyParser.urlencoded()];
 
+const middlewares = [bodyParser.urlencoded()];
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
