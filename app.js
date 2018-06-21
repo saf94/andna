@@ -4,8 +4,8 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const bodyParser = require("body-parser");
-
 var indexRouter = require("./routes/index");
+const db = require("./db");
 
 const app = express();
 
@@ -23,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
 app.use(
   bodyParser.urlencoded({
     // to support URL-encoded bodies
@@ -31,6 +32,7 @@ app.use(
 );
 
 app.use("/", indexRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -48,20 +50,12 @@ app.use(function(err, req, res, next) {
   res.render("error");
 });
 
-/*var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  var dbo = db.db("appdb");
-  dbo.createCollection("profiles", function(err, res) {
+db.connect().then(conn => {
+  const appdb = conn.db("appdb");
+  appdb.createCollection("cirpoTest", function(err, res) {
     if (err) throw err;
-    console.log("Collection created!");
+    console.log("Collection cirpoTest created!");
   });
-  // dbo.collection("profiles").insertOne({ username: "shayat@and.digital", name: "Saf Hayat"}, function(err, res) {
-  //   if (err) throw err;
-  //   console.log("1 document inserted");
-    db.close();    
-  // });
-}); */
+});
 
 module.exports = app;
