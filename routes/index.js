@@ -9,6 +9,7 @@
   (upload = multer({ limits: { fileSize: 2000000 }, dest: "uploads/" }));
 
 var path = require("path");
+const quickstart = require("../quickstart.js");
 
 module.exports = router;
 
@@ -108,4 +109,5 @@ router.post("/formSubmit", function(req, res) {
   );
 
   console.log("profile", profile);
+  quickstart();
 });
