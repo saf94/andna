@@ -1,42 +1,37 @@
-<h1>ANDNA</h1>
+# ANDNA
 
-<i>...you know... like AND and DNA. You see what I did there? Huh?... HUH?...</i>
+*...you know... like AND and DNA. You see what I did there? Huh?... HUH?...*
 
-<h2>What is required?</h2>
+## What is required?
 
 On your local environment ensure you have installed:
 
-Git
-
-	brew install git	
-
-NodeJs
-
-	brew install node
-
-Nodemon
-
-	npm install nodemon
-
-MongoDB
-
-	brew install mongodb
-
-Clone repository using git string, not https url. (...git what? when in doubt go to http://rogerdudler.github.io/git-guide/)
-Dependencies are handled in package.json. To install additional packages locally run: 
+* Git
+* NodeJs
+* MongoDb ( not dockerized yet... `brew install mongodb`)
 		
-	npm install <package>
+## How to start the appliation?
+ 
+Install dependencies
 
-<h2>How to start the appliation?</h2>
- 
- Production
- 
-	npm start
+```sh
+npm install
+```
+
+
+Production
+
+ ```sh
+ npm start
+```
 
 Development
 	
-	npm run-script dev
+```sh
+npm run dev
+```
 
-Tests
+Tests 
 
-	npm run-script test
+	There are no tests... 😱
+	
