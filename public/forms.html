@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="KJ">
-	<!-- <meta http-equiv="refresh" content="30"> -->
+
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
 	 crossorigin="anonymous">
 	<link rel="stylesheet" href="/stylesheets/forms.css">
@@ -110,6 +110,31 @@
 
 				<button type="button" id="addExp">Add</button>
 
+			<div id="keySkills">
+				<section class="sectionBackground" id="keySkills">
+					<h4>Key Skills:</h4>
+						<div class="autocomplete form-group">
+							<input class="form-control" id="myInput" type="text">
+							<div class="skillsHolder" id="skillz">
+							</div>
+					  	</div>
+				</section>
+			</div>
+			
+			<div id="tools">
+					<section class="sectionBackground" id="tools">
+						<h4>Tools:</h4>
+							<div class="form-group autocomplete">
+								<input class="form-control" id="myInputTools" type="text">
+								<div class="toolsHolder" id="toolz">
+								</div>
+							</div>
+					</section>
+				</div>
+
+			<div>
+					<button type="button" id="submit">Submit</button>
+			</div>
 				<input type="submit" value="Submit">
 		</form>
 		</div>
@@ -126,7 +151,11 @@
                   </div>
                   <button type="submit" class="btn btn-default">Submit</button>
                 </form>
-              </div> -->
+			  </div> -->
+
+		<script>autocomplete(document.getElementById("myInput"), skills);</script>
+		<script>autocomplete(document.getElementById("myInputTools"), tools);</script>
+
 </body>
 
 </html>
