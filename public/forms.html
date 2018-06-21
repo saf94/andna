@@ -7,6 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="KJ">
+
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
 	 crossorigin="anonymous">
 	<link rel="stylesheet" href="/stylesheets/forms.css">
@@ -15,7 +16,7 @@
 <body>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="#">Navbar</a>
+			<a class="navbar-brand" href="http://localhost:3000/"><img src="/images/ANDlogo.png" alt="AND Digital logo" height="36"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 			 aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -43,7 +44,7 @@
 		<div class="jumbotron jumbotron-billboard">
 			<div class="container">
 				<img src="https://static.andigital.com/wp-content/uploads/2017/05/02163341/AND_LOGO_RGB_ON_WHITE.png" id="AndLogo"/>
-				<h2>Form</h2>
+				<h2>Bio</h2>
 			</div>
 		</div>
 	</section>
@@ -68,7 +69,7 @@
 		</section>
 
 
-		<form action="/action_page.php">
+		<form action="/formSubmit" method="POST">
 
 			<section class="sectionBackground">
 				<h3>Personal info:</h3>
@@ -134,6 +135,7 @@
 			<div>
 					<button type="button" id="submit">Submit</button>
 			</div>
+				<input type="submit" value="Submit">
 		</form>
 		</div>
 

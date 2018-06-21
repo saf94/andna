@@ -142,6 +142,11 @@ label > span {
   margin-top: -80px;
 }
 
+#navbarSupportedContent > ul {
+  margin-left: 33.5%;
+
+}
+
 @media screen and (max-width: 768px) {
   .jumbotron {
     padding-top: 60px;
