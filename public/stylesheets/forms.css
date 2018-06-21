@@ -162,15 +162,15 @@ label > span {
 }
 
 .autocomplete-items {
-  position: absolute;
+  position: relative;
   border: 1px solid #d4d4d4;
   border-bottom: none;
   border-top: none;
-  z-index: 99;
   /*position the autocomplete items to be the same width as the container:*/
   top: 100%;
   left: 0;
   right: 0;
+
 }
 .autocomplete-items div {
   padding: 10px;
@@ -208,7 +208,7 @@ button:disabled {
   color: white;
 }
 
-.skill {
+.skill, .tool {
   background-color: #273041;
   color: white;
   border-radius: 4px;
@@ -220,11 +220,11 @@ button:disabled {
   margin-top: 30px;
 }
 
-.skill p {
+.skill p, .tool p {
   line-height:  40px;
 }
 
-#skilly {
+#skilly, #tooly{
   position: relative;
   background-color: #ec4746;
   color: white;
@@ -240,13 +240,23 @@ button:disabled {
   left: 6px !important;
 }
 
-#skillz {
+#skillz, #toolz{
   /* display: inline-block !important; */
   width: 100%;
   float: left;
+  position: relative;
+  
 }
 
-#skillz div {
+#skillz div, #toolz div{
   float: left;
   margin-left: 10px;
+  position: relative;
+}
+
+#submit {
+  float: right;
+  background-color: #ec4746;
+  color: white;
+  margin-bottom: 30px;
 }

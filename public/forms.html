@@ -125,10 +125,16 @@
 					<section class="sectionBackground" id="tools">
 						<h4>Tools:</h4>
 							<div class="form-group autocomplete">
-								<input class="form-control" id="myInput" type="text">
+								<input class="form-control" id="myInputTools" type="text">
+								<div class="toolsHolder" id="toolz">
+								</div>
 							</div>
 					</section>
 				</div>
+
+			<div>
+					<button type="button" id="submit">Submit</button>
+			</div>
 		</form>
 		</div>
 
@@ -147,6 +153,8 @@
 			  </div> -->
 
 		<script>autocomplete(document.getElementById("myInput"), skills);</script>
+		<script>autocomplete(document.getElementById("myInputTools"), tools);</script>
+
 </body>
 
 </html>

@@ -8,6 +8,7 @@
 // })
 var expId = 2;
 var skillsID = 1;
+var toolsID = 1;
 
 function removeElement(id) {
     var expDiv = document.getElementById("experience" + id)
@@ -18,9 +19,17 @@ function removeElement(id) {
 
 function removeSkill(id) {
   console.log(id);
-  var expDiv = document.getElementById('skill' + id) 
-  expDiv.parentNode.removeChild(expDiv);
+  var skillDiv = document.getElementById('skill' + id) 
+  skillDiv.parentNode.removeChild(skillDiv);
   skillsID--;
+  return false;
+}
+
+function removeTool(id) {
+  console.log(id);
+  var toolDiv = document.getElementById('tool' + id) 
+  toolDiv.parentNode.removeChild(toolDiv);
+  toolsID--;
   return false;
 }
 
@@ -33,7 +42,7 @@ document.getElementById("addExp").addEventListener("click", function() {
 
 function addSkill(skillSelected, skillName){
   skillSelected.addEventListener("click", function() {
-    if(document.getElementsByClassName("skillsHolder").length < 10) {
+    if(document.getElementsByClassName("skillsHolder").length < 11) {
         document.getElementById("skillz").innerHTML += '<div class="skill" id="skill'+skillsID+'"><p>'+ skillName + '</p> <button type="button" id="skilly" onclick="removeSkill(' + skillsID + ')"> X </button></div>' 
         skillsID++;
         // document.getElementById("myInput").reset();
@@ -42,8 +51,20 @@ function addSkill(skillSelected, skillName){
   
 }
 
+function addTool(toolSelected, toolName){
+  toolSelected.addEventListener("click", function() {
+    if(document.getElementsByClassName("toolzHolder").length < 9) {
+        document.getElementById("toolz").innerHTML += '<div class="tool" id="tool'+toolsID+'"><p>'+ toolName + '</p> <button type="button" id="tooly" onclick="removeTool(' + toolsID + ')"> X </button></div>' 
+        toolsID++;
+        // document.getElementById("myInput").reset();
+    }
+  })
+  
+}
 
-var skills = ["C#", "C++", "Java", "React", "Angular JS", "Javascript"];
+const skills = ["C#", "C++", "Java", "React", "Angular JS", "JavaScript"];
+const tools = ["Wireframes", "Sketch", "Scrum", "Balsamiq", "WIRE", "WHAT"];
+
 
 
 function autocomplete(inp, arr) {
@@ -74,7 +95,11 @@ function autocomplete(inp, arr) {
             b.innerHTML += arr[i].substr(val.length);
             /*insert a input field that will hold the current array item's value:*/
             b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-            addSkill(b, arr[i]);
+            if (arr === skills) {
+              addSkill(b, arr[i]);
+            } if (arr === tools) {
+              addTool(b, arr[i]);
+            }
             /*execute a function when someone clicks on the item value (DIV element):*/
                 b.addEventListener("click", function(e) {
                 /*insert the value for the autocomplete text field:*/
