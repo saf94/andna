@@ -1,5 +1,7 @@
 # Environment
 .DS_Store
+credentials.json
+client_secret.json
 
 # Logs
 logs
