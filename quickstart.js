@@ -1,6 +1,7 @@
 const fs = require("fs");
 const readline = require("readline");
 const { google } = require("googleapis");
+const db = require("./db");
 
 // BEGINNING OF AUTH SECTION
 
@@ -107,52 +108,78 @@ function gapiDrive(auth) {
         const slides = google.slides({ version: "v1", auth });
 
         // Define what to subsitute
-
-        const requests = [
-          {
-            replaceAllText: {
-              containsText: {
-                text: "{name}",
-                matchCase: true
+        getProfiles().then(profiles => {
+          let requests;
+          profiles.forEach(profile => {
+            requests = [
+              {
+                replaceAllText: {
+                  containsText: {
+                    text: "{name}",
+                    matchCase: true
+                  },
+                  replaceText: profile.name
+                }
               },
-              replaceText: "Bob"
-            }
-          },
-          {
-            replaceAllText: {
-              containsText: {
-                text: "{surname}",
-                matchCase: true
-              },
-              replaceText: "Jones"
-            }
-          }
-        ];
+              {
+                replaceAllText: {
+                  containsText: {
+                    text: "{role}",
+                    matchCase: true
+                  },
+                  replaceText: profile.role
+                }
+              }
+            ];
+          });
 
-        // Execute the requests for this presentation.
-        slides.presentations.batchUpdate(
-          {
-            presentationId: presentationCopyId,
-            resource: {
-              requests: requests
+          // Execute the requests for this presentation.
+          slides.presentations.batchUpdate(
+            {
+              presentationId: presentationCopyId,
+              resource: {
+                requests: requests
+              }
+            },
+            (err, batchUpdateResponse) => {
+              if (err) return console.log("The API returned an error: " + err);
+              const result = batchUpdateResponse;
+              // Count the total number of replacements made.
+              const numReplacements = 0;
+              for (var i = 0; i < result.replies.length; ++i) {
+                numReplacements +=
+                  result.replies[i].replaceAllText.occurrencesChanged;
+              }
+              console.log(
+                `Created presentation for ${customerName} with ID: ${presentationCopyId}`
+              );
+              console.log(`Replaced ${numReplacements} text instances`);
             }
-          },
-          (err, batchUpdateResponse) => {
-            if (err) return console.log("The API returned an error: " + err);
-            const result = batchUpdateResponse;
-            // Count the total number of replacements made.
-            const numReplacements = 0;
-            for (var i = 0; i < result.replies.length; ++i) {
-              numReplacements +=
-                result.replies[i].replaceAllText.occurrencesChanged;
-            }
-            console.log(
-              `Created presentation for ${customerName} with ID: ${presentationCopyId}`
-            );
-            console.log(`Replaced ${numReplacements} text instances`);
-          }
-        );
+          );
+        });
       }
     }
   );
 }
+
+function getProfiles() {
+  return new Promise((resolve, reject) => {
+    db.connect().then(conn => {
+      const appdb = conn.db("appdb");
+      const collection = appdb.collection("profiles");
+
+      const profiles = collection.find({}).toArray((err, profiles) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+
+        resolve(profiles);
+        console.log(profiles);
+        return;
+      });
+    });
+  });
+}
+
+getProfiles();
