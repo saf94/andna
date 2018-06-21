@@ -1,12 +1,7 @@
 # Environment
 .DS_Store
-<<<<<<< HEAD
 credentials.json
 client_secret.json
-=======
-client_secret.json
-credentials.json
->>>>>>> modified gitignore to exclude credentials file
 
 # Logs
 logs
