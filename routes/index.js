@@ -94,7 +94,9 @@ router.post("/formSubmit", function(req, res) {
     experience: {
       titleLocation: `${req.body.role} , ${req.body.location}`,
       roleSummary: req.body.roleSummary
-    }
+    },
+    skills: req.body.skills,
+    tools: req.body.tools
   };
 
   MongoClient.connect(
@@ -108,6 +110,6 @@ router.post("/formSubmit", function(req, res) {
     }
   );
 
-  console.log("profile", profile);
+  // console.log("profile", profile);
   quickstart();
 });

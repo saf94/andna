@@ -69,7 +69,7 @@
 		</section>
 
 
-		<form action="/formSubmit" method="POST">
+		<form action="/formSubmit" method="POST" id="formyForm" name="formyForm">
 
 			<section class="sectionBackground">
 				<h3>Personal info:</h3>
@@ -114,7 +114,7 @@
 				<section class="sectionBackground" id="keySkills">
 					<h4>Key Skills:</h4>
 						<div class="autocomplete form-group">
-							<input class="form-control" id="myInput" type="text">
+							<input class="form-control" id="myInput" type="text" name="skills">
 							<div class="skillsHolder" id="skillz">
 							</div>
 					  	</div>
@@ -125,17 +125,17 @@
 					<section class="sectionBackground" id="tools">
 						<h4>Tools:</h4>
 							<div class="form-group autocomplete">
-								<input class="form-control" id="myInputTools" type="text">
+								<input class="form-control" id="myInputTools" type="text" name="tools">
 								<div class="toolsHolder" id="toolz">
 								</div>
 							</div>
 					</section>
 				</div>
 
-			<div>
+			<!-- <div>
 					<button type="button" id="submit">Submit</button>
-			</div>
-				<input type="submit" value="Submit">
+			</div> -->
+				<input type="submit" name="btnSubmit" id="btnSubmit" value="Submit">
 		</form>
 		</div>
 

@@ -9,6 +9,8 @@
 var expId = 2;
 var skillsID = 1;
 var toolsID = 1;
+var skillsChosen;
+var toolsChosen;
 
 function removeElement(id) {
   var expDiv = document.getElementById("experience" + id);
@@ -44,7 +46,8 @@ document.getElementById("addExp").addEventListener("click", function() {
 });
 
 function addSkill(skillSelected, skillName) {
-  skillSelected.addEventListener("click", function() {
+  skillSelected.addEventListener("click", function(event) {
+    event.preventDefault();
     if (document.getElementsByClassName("skillsHolder").length < 11) {
       document.getElementById("skillz").innerHTML +=
         '<div class="skill" id="skill' +
@@ -56,9 +59,21 @@ function addSkill(skillSelected, skillName) {
         ')"> X </button></div>';
       skillsID++;
       // document.getElementById("myInput").reset();
+      if (skillsID < 3) {
+        skillsChosen = skillName;
+      } else {
+        skillsChosen += ", " + skillName;
+      }
     }
   });
 }
+
+document.getElementById("formyForm").addEventListener("submit", function(e) {
+  e.preventDefault(); //stop form from submitting
+  document.forms["formyForm"].elements["skills"].value = skillsChosen;
+  document.forms["formyForm"].elements["tools"].value = toolsChosen;
+  document.getElementById("formyForm").submit();
+});
 
 function addTool(toolSelected, toolName) {
   toolSelected.addEventListener("click", function() {
@@ -73,6 +88,11 @@ function addTool(toolSelected, toolName) {
         ')"> X </button></div>';
       toolsID++;
       // document.getElementById("myInput").reset();
+      if (toolsID < 3) {
+        toolsChosen = toolName;
+      } else {
+        toolsChosen += ", " + toolName;
+      }
     }
   });
 }

@@ -260,7 +260,7 @@ button:disabled {
   position: relative;
 }
 
-#submit {
+#btnSubmit {
   float: right;
   background-color: #ec4746;
   color: white;
