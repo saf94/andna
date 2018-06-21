@@ -47,7 +47,7 @@ db.collection('profiles')
 
 router.get('/picture/:picture', function(req, res){
 // assign the URL parameter to a variable
-var filename = req.params.picture;
+const filename = req.params.picture;
 // open the mongodb connection with the connection
 // string stored in the variable called url.
    MongoClient.connect(url, function(err, db){
@@ -70,8 +70,11 @@ router.get('/bio', function(req, res){ res.sendFile(path.join(__dirname, '../pub
 router.get('/form', function(req, res){ res.sendFile(path.join(__dirname, '../public/forms.html')); });
 
 router.post('/formSubmit', function(req, res) { 
-    res.send(req.body) 
-    MongoClient.connect(url, function(err, db){
-    db.collection('profiles').insert(req.body)
-    })
+    let json = `{ "name": ${req.body.name}, "role": ${req.body.title}, "linkedin": ${req.body.LinkedIn}, "summary": ${req.body.Summary}, "Experience": { "Title & Location": ${req.body.role} + ", " + ${req.body.location}, "Role summary": ${req.body.roleSummary} } `
+    let profile = JSON.parse(json);
+    console.log("profile", profile);
+    res.send(req.body); 
+    // MongoClient.connect(url, function(err, db){
+    //     db.collection('profiles').insert(profile)
+    // })
 })
