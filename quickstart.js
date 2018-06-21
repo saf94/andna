@@ -111,63 +111,85 @@ function quickstart() {
           // Define what to subsitute
           getProfiles().then(profiles => {
             let requests;
+            let expArray;
             profiles.forEach(profile => {
-              requests = [
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{name}",
-                      matchCase: true
-                    },
-                    replaceText: profile.name
+              profile.experience.map((exp, index) => {
+                expArray = [
+                  {
+                    replaceAllText: {
+                      containsText: {
+                        text: "{titleLocation" + index + "}",
+                        matchCase: true
+                      },
+                      replaceText: exp.titleLocation
+                    }
+                  },
+                  {
+                    replaceAllText: {
+                      containsText: {
+                        text: "{roleSummary" + index + "}",
+                        matchCase: true
+                      },
+                      replaceText: exp.roleSummary
+                    }
                   }
-                },
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{role}",
-                      matchCase: true
-                    },
-                    replaceText: profile.role
-                  }
-                },
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{linkedin}",
-                      matchCase: true
-                    },
-                    replaceText: profile.linkedin
-                  }
-                },
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{summary}",
-                      matchCase: true
-                    },
-                    replaceText: profile.summary
-                  }
-                },
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{titleLocation}",
-                      matchCase: true
-                    },
-                    replaceText: profile.experience.titleLocation
-                  }
-                },
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{roleSummary}",
-                      matchCase: true
-                    },
-                    replaceText: profile.experience.roleSummary
-                  }
-                }
-              ];
+                ];
+                return expArray;
+              });
+              console.log("profiles", profiles);
+              console.log("profiles.experience", profiles.experience);
+              console.log("expArray", expArray);
+              console.log(
+                "expArray[text]",
+                expArray[0].replaceAllText.containsText.text
+              );
+              console.log(
+                "expArray[replacetext]",
+                expArray[0].replaceAllText.replaceText
+              );
+              expArray.map(expItems => {
+                console.log("expItems", expItems);
+                requests = [
+                  {
+                    replaceAllText: {
+                      containsText: {
+                        text: "{name}",
+                        matchCase: true
+                      },
+                      replaceText: profile.name
+                    }
+                  },
+                  {
+                    replaceAllText: {
+                      containsText: {
+                        text: "{role}",
+                        matchCase: true
+                      },
+                      replaceText: profile.role
+                    }
+                  },
+                  {
+                    replaceAllText: {
+                      containsText: {
+                        text: "{linkedin}",
+                        matchCase: true
+                      },
+                      replaceText: profile.linkedin
+                    }
+                  },
+                  {
+                    replaceAllText: {
+                      containsText: {
+                        text: "{summary}",
+                        matchCase: true
+                      },
+                      replaceText: profile.summary
+                    }
+                  },
+                  expItems
+                ];
+                console.log("requests", requests);
+              });
             });
 
             // Execute the requests for this presentation.

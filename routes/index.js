@@ -86,15 +86,33 @@ router.get("/form", function(req, res) {
 });
 
 router.post("/formSubmit", function(req, res) {
+  let experience = [
+    {
+      titleLocation: `${req.body.role1} , ${req.body.location1}`,
+      roleSummary: req.body.roleSummary1
+    }
+  ];
+
+  if (req.body.role2) {
+    experience.push({
+      titleLocation: `${req.body.role2} , ${req.body.location2}`,
+      roleSummary: req.body.roleSummary2
+    });
+  }
+
+  if (req.body.role3) {
+    experience.push({
+      titleLocation: `${req.body.role3} , ${req.body.location3}`,
+      roleSummary: req.body.roleSummary3
+    });
+  }
+
   const profile = {
     name: req.body.name,
     role: req.body.title,
     linkedin: req.body.LinkedIn,
     summary: req.body.Summary,
-    experience: {
-      titleLocation: `${req.body.role} , ${req.body.location}`,
-      roleSummary: req.body.roleSummary
-    },
+    experience: experience,
     skills: req.body.skills,
     tools: req.body.tools
   };
