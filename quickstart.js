@@ -221,6 +221,16 @@ function generateGoogleSlideRequest(profile) {
     }
   });
 
+  googleSlideRequest.push({
+    replaceAllText: {
+      containsText: {
+        text: "{summary}",
+        matchCase: true
+      },
+      replaceText: profile.summary
+    }
+  });
+
   return googleSlideRequest;
 }
 
