@@ -106,14 +106,17 @@ router.post("/formSubmit", function(req, res) {
     });
   }
 
+  const skills = req.body.skills.split(", ");
+  const tools = req.body.tools.split(", ");
+
   const profile = {
     name: req.body.name,
     role: req.body.title,
     linkedin: req.body.LinkedIn,
     summary: req.body.Summary,
     experience: experience,
-    skills: req.body.skills,
-    tools: req.body.tools
+    skills: skills,
+    tools: tools
   };
 
   MongoClient.connect(
@@ -127,6 +130,6 @@ router.post("/formSubmit", function(req, res) {
     }
   );
 
-  // console.log("profile", profile);
+  console.log("profile", profile);
   quickstart();
 });

@@ -123,16 +123,6 @@ function quickstart() {
                 if (err)
                   return console.log("The API returned an error: " + err);
                 const result = batchUpdateResponse;
-                // Count the total number of replacements made.
-                const numReplacements = 0;
-                for (var i = 0; i < result.replies.length; ++i) {
-                  numReplacements +=
-                    result.replies[i].replaceAllText.occurrencesChanged;
-                }
-                console.log(
-                  `Created presentation for ${customerName} with ID: ${presentationCopyId}`
-                );
-                console.log(`Replaced ${numReplacements} text instances`);
               }
             );
           });
@@ -211,25 +201,25 @@ function generateGoogleSlideRequest(profile) {
     }
   });
 
-  googleSlideRequest.push({
-    replaceAllText: {
-      containsText: {
-        text: "{summary}",
-        matchCase: true
-      },
-      replaceText: profile.summary
-    }
-  });
+  // googleSlideRequest.push({
+  //   replaceAllText: {
+  //     containsText: {
+  //       text: "{summary}",
+  //       matchCase: true
+  //     },
+  //     replaceText: profile.summary
+  //   }
+  // });
 
-  googleSlideRequest.push({
-    replaceAllText: {
-      containsText: {
-        text: "{summary}",
-        matchCase: true
-      },
-      replaceText: profile.summary
-    }
-  });
+  // googleSlideRequest.push({
+  //   replaceAllText: {
+  //     containsText: {
+  //       text: "{summary}",
+  //       matchCase: true
+  //     },
+  //     replaceText: profile.summary
+  //   }
+  // });
 
   return googleSlideRequest;
 }
