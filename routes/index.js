@@ -131,6 +131,6 @@ router.post("/formSubmit", function(req, res) {
   );
 
   console.log("profile", profile);
-  quickstart();
+  // quickstart();
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });

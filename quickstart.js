@@ -3,7 +3,7 @@ const readline = require("readline");
 const { google } = require("googleapis");
 const db = require("./db");
 
-function quickstart() {
+function quickstart(exportedUser) {
   // BEGINNING OF AUTH SECTION
 
   /**
@@ -110,7 +110,7 @@ function quickstart() {
 
           // Define what to subsitute
           getProfiles().then(profiles => {
-            const googleSlideRequest = generateGoogleSlideRequest(profiles[0]);
+            const googleSlideRequest = generateGoogleSlideRequest(profiles);
             // Execute the requests for this presentation.
             slides.presentations.batchUpdate(
               {
@@ -131,27 +131,29 @@ function quickstart() {
     );
   }
 
-  function getProfiles() {
+  function getProfiles(name) {
     return new Promise((resolve, reject) => {
       db.connect().then(conn => {
         const appdb = conn.db("appdb");
         const collection = appdb.collection("profiles");
 
-        const profiles = collection.find({}).toArray((err, profiles) => {
-          if (err) {
-            reject(err);
-            return;
-          }
+        const profiles = collection
+          .find({ name: name })
+          .toArray((err, profiles) => {
+            if (err) {
+              reject(err);
+              return;
+            }
 
-          resolve(profiles);
-          console.log(profiles);
-          return;
-        });
+            resolve(profiles);
+            console.log(profiles);
+            return;
+          });
       });
     });
   }
 
-  getProfiles();
+  getProfiles(exportedUser);
 }
 
 function generateGoogleSlideRequest(profile) {
