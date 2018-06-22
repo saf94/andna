@@ -110,88 +110,19 @@ function quickstart() {
 
           // Define what to subsitute
           getProfiles().then(profiles => {
-            let requests;
-            profiles.forEach(profile => {
-              requests = [
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{name}",
-                      matchCase: true
-                    },
-                    replaceText: profile.name
-                  }
-                },
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{role}",
-                      matchCase: true
-                    },
-                    replaceText: profile.role
-                  }
-                },
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{linkedin}",
-                      matchCase: true
-                    },
-                    replaceText: profile.linkedin
-                  }
-                },
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{summary}",
-                      matchCase: true
-                    },
-                    replaceText: profile.summary
-                  }
-                },
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{titleLocation}",
-                      matchCase: true
-                    },
-                    replaceText: profile.experience.titleLocation
-                  }
-                },
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{roleSummary}",
-                      matchCase: true
-                    },
-                    replaceText: profile.experience.roleSummary
-                  }
-                }
-              ];
-            });
-
+            const googleSlideRequest = generateGoogleSlideRequest(profiles[0]);
             // Execute the requests for this presentation.
             slides.presentations.batchUpdate(
               {
                 presentationId: presentationCopyId,
                 resource: {
-                  requests: requests
+                  requests: googleSlideRequest
                 }
               },
               (err, batchUpdateResponse) => {
                 if (err)
                   return console.log("The API returned an error: " + err);
                 const result = batchUpdateResponse;
-                // Count the total number of replacements made.
-                const numReplacements = 0;
-                for (var i = 0; i < result.replies.length; ++i) {
-                  numReplacements +=
-                    result.replies[i].replaceAllText.occurrencesChanged;
-                }
-                console.log(
-                  `Created presentation for ${customerName} with ID: ${presentationCopyId}`
-                );
-                console.log(`Replaced ${numReplacements} text instances`);
               }
             );
           });
@@ -223,4 +154,100 @@ function quickstart() {
   getProfiles();
 }
 
-module.exports = quickstart;
+function generateGoogleSlideRequest(profile) {
+  const googleSlideRequest = [];
+  profile.experience.forEach((experience, index) => {
+    googleSlideRequest.push({
+      replaceAllText: {
+        containsText: { text: "{titleLocation" + index + "}", matchCase: true },
+        replaceText: experience.titleLocation
+      }
+    });
+    googleSlideRequest.push({
+      replaceAllText: {
+        containsText: { text: "{summary" + index + "}", matchCase: true },
+        replaceText: experience.roleSummary
+      }
+    });
+  });
+
+  for (let i = 0; i < 8; i++) {
+    if (profile.skills[i]) {
+      googleSlideRequest.push({
+        replaceAllText: {
+          containsText: { text: "{skills" + i + "}", matchCase: true },
+          replaceText: profile.skills[i]
+        }
+      });
+    } else {
+      googleSlideRequest.push({
+        replaceAllText: {
+          containsText: { text: "{skills" + i + "}", matchCase: true },
+          replaceText: ""
+        }
+      });
+    }
+  }
+
+  for (let i = 0; i < 8; i++) {
+    if (profile.tools[i]) {
+      googleSlideRequest.push({
+        replaceAllText: {
+          containsText: { text: "{tools" + i + "}", matchCase: true },
+          replaceText: profile.tools[i]
+        }
+      });
+    } else {
+      googleSlideRequest.push({
+        replaceAllText: {
+          containsText: { text: "{tools" + i + "}", matchCase: true },
+          replaceText: ""
+        }
+      });
+    }
+  }
+
+  googleSlideRequest.push({
+    replaceAllText: {
+      containsText: {
+        text: "{name}",
+        matchCase: true
+      },
+      replaceText: profile.name
+    }
+  });
+
+  googleSlideRequest.push({
+    replaceAllText: {
+      containsText: {
+        text: "{role}",
+        matchCase: true
+      },
+      replaceText: profile.role
+    }
+  });
+
+  googleSlideRequest.push({
+    replaceAllText: {
+      containsText: {
+        text: "{linkedin}",
+        matchCase: true
+      },
+      replaceText: profile.linkedin
+    }
+  });
+
+  googleSlideRequest.push({
+    replaceAllText: {
+      containsText: {
+        text: "{summary}",
+        matchCase: true
+      },
+      replaceText: profile.summary
+    }
+  });
+
+  return googleSlideRequest;
+}
+
+module.exports = { quickstart, generateGoogleSlideRequest };
