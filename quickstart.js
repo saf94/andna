@@ -127,7 +127,7 @@ function quickstart() {
                   {
                     replaceAllText: {
                       containsText: {
-                        text: "{roleSummary" + index + "}",
+                        text: "{summary" + index + "}",
                         matchCase: true
                       },
                       replaceText: exp.roleSummary
@@ -136,62 +136,55 @@ function quickstart() {
                 ];
                 return expArray;
               });
-              console.log("profiles", profiles);
-              console.log("profiles.experience", profiles.experience);
-              console.log("expArray", expArray);
-              console.log(
-                "expArray[text]",
-                expArray[0].replaceAllText.containsText.text
-              );
-              console.log(
-                "expArray[replacetext]",
-                expArray[0].replaceAllText.replaceText
-              );
-              expArray.map(expItems => {
-                console.log("expItems", expItems);
-                requests = [
-                  {
-                    replaceAllText: {
-                      containsText: {
-                        text: "{name}",
-                        matchCase: true
-                      },
-                      replaceText: profile.name
-                    }
-                  },
-                  {
-                    replaceAllText: {
-                      containsText: {
-                        text: "{role}",
-                        matchCase: true
-                      },
-                      replaceText: profile.role
-                    }
-                  },
-                  {
-                    replaceAllText: {
-                      containsText: {
-                        text: "{linkedin}",
-                        matchCase: true
-                      },
-                      replaceText: profile.linkedin
-                    }
-                  },
-                  {
-                    replaceAllText: {
-                      containsText: {
-                        text: "{summary}",
-                        matchCase: true
-                      },
-                      replaceText: profile.summary
-                    }
-                  },
-                  expItems
-                ];
-                console.log("requests", requests);
-              });
+
+              requests = [
+                {
+                  replaceAllText: {
+                    containsText: {
+                      text: "{name}",
+                      matchCase: true
+                    },
+                    replaceText: profile.name
+                  }
+                },
+                {
+                  replaceAllText: {
+                    containsText: {
+                      text: "{role}",
+                      matchCase: true
+                    },
+                    replaceText: profile.role
+                  }
+                },
+                {
+                  replaceAllText: {
+                    containsText: {
+                      text: "{linkedin}",
+                      matchCase: true
+                    },
+                    replaceText: profile.linkedin
+                  }
+                },
+                {
+                  replaceAllText: {
+                    containsText: {
+                      text: "{summary}",
+                      matchCase: true
+                    },
+                    replaceText: profile.summary
+                  }
+                }
+              ];
+            });
+            expArray.map((expItems, index) => {
+              // console.log("expItems", expItems);
+              requests.push(expItems);
+              console.log("requests " + index, requests);
             });
 
+            requests.forEach(req => {
+              console.log("requests", req);
+            });
             // Execute the requests for this presentation.
             slides.presentations.batchUpdate(
               {
