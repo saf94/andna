@@ -171,6 +171,42 @@ function generateGoogleSlideRequest(profile) {
     });
   });
 
+  for (let i = 0; i < 8; i++) {
+    if (profile.skills[i]) {
+      googleSlideRequest.push({
+        replaceAllText: {
+          containsText: { text: "{skills" + i + "}", matchCase: true },
+          replaceText: profile.skills[i]
+        }
+      });
+    } else {
+      googleSlideRequest.push({
+        replaceAllText: {
+          containsText: { text: "{skills" + i + "}", matchCase: true },
+          replaceText: ""
+        }
+      });
+    }
+  }
+
+  for (let i = 0; i < 8; i++) {
+    if (profile.tools[i]) {
+      googleSlideRequest.push({
+        replaceAllText: {
+          containsText: { text: "{tools" + i + "}", matchCase: true },
+          replaceText: profile.tools[i]
+        }
+      });
+    } else {
+      googleSlideRequest.push({
+        replaceAllText: {
+          containsText: { text: "{tools" + i + "}", matchCase: true },
+          replaceText: ""
+        }
+      });
+    }
+  }
+
   googleSlideRequest.push({
     replaceAllText: {
       containsText: {
@@ -201,25 +237,15 @@ function generateGoogleSlideRequest(profile) {
     }
   });
 
-  // googleSlideRequest.push({
-  //   replaceAllText: {
-  //     containsText: {
-  //       text: "{summary}",
-  //       matchCase: true
-  //     },
-  //     replaceText: profile.summary
-  //   }
-  // });
-
-  // googleSlideRequest.push({
-  //   replaceAllText: {
-  //     containsText: {
-  //       text: "{summary}",
-  //       matchCase: true
-  //     },
-  //     replaceText: profile.summary
-  //   }
-  // });
+  googleSlideRequest.push({
+    replaceAllText: {
+      containsText: {
+        text: "{summary}",
+        matchCase: true
+      },
+      replaceText: profile.summary
+    }
+  });
 
   return googleSlideRequest;
 }

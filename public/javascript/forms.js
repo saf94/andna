@@ -45,11 +45,9 @@ document.getElementById("addExp").addEventListener("click", function() {
       expId +
       '" placeholder="E.g. Avios/Halfords/BA" name="location' +
       expId +
-      '"></div><div class="form-group"><label for="LinkedIn">Summary</label><input type="roleSummary" class="form-control" id="roleSummary"' +
+      '"></div><div class="form-group"><label for="LinkedIn">Summary</label><input type="roleSummary" class="form-control" id="roleSummary" placeholder="Summary of responsibilities" name="roleSummary' +
       expId +
-      'placeholder="Summary of responsibilities" name="roleSummary"><button type="button" id="deleteExp" onclick="removeElement(' +
-      expId +
-      ')"> - </button></section>';
+      '"><button type="button" id="deleteExp" onclick="removeElement()"> - </button></section>';
     expId++;
   }
 });
