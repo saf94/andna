@@ -1,0 +1,55 @@
+@font-face {
+    src: url(../Fonts/Poppins-Medium.ttf);
+    font-family: Poppins;
+}
+
+td {
+    width: 25%;
+    float: none !important;
+    text-align: center;
+}
+
+th {
+  background: #ec4746;  
+  text-align: center !important;
+  color: white;
+}
+
+table {
+    border-spacing: 5px !important;
+    border-collapse: separate !important;
+    margin: auto;
+    min-width: 500px;
+    min-height: 300px;
+    max-width: 500px;
+    max-height: 300px;
+}
+
+body {
+    font-size: 14px !important;
+}
+
+#holder {
+    margin: auto;
+
+}
+
+button {
+      cursor: pointer;
+      min-width: 94px;
+      height: 36px;
+      border-radius: 2px;
+      border-color: transparent;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-align: center;
+      color: #ffffff;
+      background-color: #273041  ;
+      /* #273041 */
+      padding: 3px 15px;
+}
+button:disabled {
+    background-color: #a5a8ae;
+    color: white;
+}

@@ -34,7 +34,7 @@ function removeTool(id) {
 }
 
 document.getElementById("addExp").addEventListener("click", function() {
-  if (document.getElementsByClassName("sectionBackground").length < 4) {
+  if (document.getElementsByClassName("sectionBackground").length < 6) {
     document.getElementById("newExperience").innerHTML +=
       '<section class="sectionBackground" id="experience' +
       expId +
