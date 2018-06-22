@@ -12,7 +12,7 @@ a {
 }
 
 .bg-2 {
-  background-color: #FF323C;
+  background-color: #ec4746;
   /* Dark Blue */
   color: #ffffff;
 }
@@ -260,9 +260,9 @@ button:disabled {
   position: relative;
 }
 
-#submit {
+#btnSubmit {
   float: right;
-  background-color: #FF323C;
+  background-color: #ec4746;
   color: white;
   margin-bottom: 30px;
 }

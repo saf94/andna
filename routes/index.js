@@ -81,8 +81,8 @@ router.get("/picture/:picture", function(req, res) {
 router.get("/bio", function(req, res) {
   res.sendFile(path.join(__dirname, "../public/bio.html"));
 });
-router.get("/squads", function(req, res) {
-  res.sendFile(path.join(__dirname, "../public/squads.html"));
+router.get("/form", function(req, res) {
+  res.sendFile(path.join(__dirname, "../public/forms.html"));
 });
 
 router.post("/formSubmit", function(req, res) {
@@ -105,12 +105,11 @@ router.post("/formSubmit", function(req, res) {
       if (err) console.log(err);
 
       db.collection("profiles").insert(profile, () => {
-        // res.json({ message: "ok" });
+        res.json({ message: "ok" });
       });
     }
   );
 
   // console.log("profile", profile);
   quickstart();
-  res.sendFile(path.join(__dirname, "../public/forms.html"));
 });
