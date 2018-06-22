@@ -1,15 +1,14 @@
-(express = require("express")),
-  (router = express.Router()),
-  (MongoClient = require("mongodb").MongoClient),
-  (ObjectId = require("mongodb").ObjectId),
-  (fs = require("fs-extra")),
-  (url = "mongodb://localhost:27017/appdb"),
-  (multer = require("multer")),
-  (util = require("util")),
-  (upload = multer({ limits: { fileSize: 2000000 }, dest: "uploads/" }));
+const express = require("express");
+const util = require("util");
+const fs = require("fs-extra");
+const multer = require("multer");
+const path = require("path");
+const { MongoClient, ObjectId } = require("mongodb");
+const { quickstart } = require("../quickstart.js");
 
-var path = require("path");
-const quickstart = require("../quickstart.js");
+const router = express.Router();
+const url = "mongodb://localhost:27017/appdb";
+const upload = multer({ limits: { fileSize: 2000000 }, dest: "uploads/" });
 
 module.exports = router;
 

@@ -110,87 +110,13 @@ function quickstart() {
 
           // Define what to subsitute
           getProfiles().then(profiles => {
-            let requests;
-            let expArray;
-            profiles.forEach(profile => {
-              profile.experience.map((exp, index) => {
-                expArray = [
-                  {
-                    replaceAllText: {
-                      containsText: {
-                        text: "{titleLocation" + index + "}",
-                        matchCase: true
-                      },
-                      replaceText: exp.titleLocation
-                    }
-                  },
-                  {
-                    replaceAllText: {
-                      containsText: {
-                        text: "{summary" + index + "}",
-                        matchCase: true
-                      },
-                      replaceText: exp.roleSummary
-                    }
-                  }
-                ];
-                return expArray;
-              });
-
-              requests = [
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{name}",
-                      matchCase: true
-                    },
-                    replaceText: profile.name
-                  }
-                },
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{role}",
-                      matchCase: true
-                    },
-                    replaceText: profile.role
-                  }
-                },
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{linkedin}",
-                      matchCase: true
-                    },
-                    replaceText: profile.linkedin
-                  }
-                },
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{summary}",
-                      matchCase: true
-                    },
-                    replaceText: profile.summary
-                  }
-                }
-              ];
-            });
-            expArray.map((expItems, index) => {
-              // console.log("expItems", expItems);
-              requests.push(expItems);
-              console.log("requests " + index, requests);
-            });
-
-            requests.forEach(req => {
-              console.log("requests", req);
-            });
+            const googleSlideRequest = generateGoogleSlideRequest(profiles[0]);
             // Execute the requests for this presentation.
             slides.presentations.batchUpdate(
               {
                 presentationId: presentationCopyId,
                 resource: {
-                  requests: requests
+                  requests: googleSlideRequest
                 }
               },
               (err, batchUpdateResponse) => {
@@ -238,4 +164,64 @@ function quickstart() {
   getProfiles();
 }
 
-module.exports = quickstart;
+function generateGoogleSlideRequest(profile) {
+  const googleSlideRequest = [];
+  profile.experience.forEach((experience, index) => {
+    googleSlideRequest.push({
+      replaceAllText: {
+        containsText: { text: "{titleLocation" + index + "}", matchCase: true },
+        replaceText: experience.titleLocation
+      }
+    });
+    googleSlideRequest.push({
+      replaceAllText: {
+        containsText: { text: "{summary" + index + "}", matchCase: true },
+        replaceText: experience.roleSummary
+      }
+    });
+  });
+
+  googleSlideRequest.push({
+    replaceAllText: {
+      containsText: {
+        text: "{name}",
+        matchCase: true
+      },
+      replaceText: profile.name
+    }
+  });
+
+  googleSlideRequest.push({
+    replaceAllText: {
+      containsText: {
+        text: "{role}",
+        matchCase: true
+      },
+      replaceText: profile.role
+    }
+  });
+
+  googleSlideRequest.push({
+    replaceAllText: {
+      containsText: {
+        text: "{linkedin}",
+        matchCase: true
+      },
+      replaceText: profile.linkedin
+    }
+  });
+
+  googleSlideRequest.push({
+    replaceAllText: {
+      containsText: {
+        text: "{summary}",
+        matchCase: true
+      },
+      replaceText: profile.summary
+    }
+  });
+
+  return googleSlideRequest;
+}
+
+module.exports = { quickstart, generateGoogleSlideRequest };
