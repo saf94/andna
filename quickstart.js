@@ -4,6 +4,7 @@ const { google } = require("googleapis");
 const db = require("./db");
 
 function quickstart(exportedUser) {
+  console.log("exportedUser", exportedUser);
   // BEGINNING OF AUTH SECTION
 
   /**
@@ -132,23 +133,22 @@ function quickstart(exportedUser) {
   }
 
   function getProfiles(name) {
+    console.log("getprofilename", name);
     return new Promise((resolve, reject) => {
       db.connect().then(conn => {
         const appdb = conn.db("appdb");
         const collection = appdb.collection("profiles");
 
-        const profiles = collection
-          .find({ name: name })
-          .toArray((err, profiles) => {
-            if (err) {
-              reject(err);
-              return;
-            }
-
-            resolve(profiles);
-            console.log(profiles);
+        const profiles = collection.find({}).toArray((err, profiles) => {
+          if (err) {
+            reject(err);
             return;
-          });
+          }
+
+          resolve(profiles);
+          console.log("profiles", profiles);
+          return;
+        });
       });
     });
   }
@@ -249,6 +249,7 @@ function generateGoogleSlideRequest(profile) {
     }
   });
 
+  console.log("googleSlideRequest", googleSlideRequest);
   return googleSlideRequest;
 }
 
