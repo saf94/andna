@@ -3,10 +3,8 @@ const readline = require("readline");
 const { google } = require("googleapis");
 const db = require("./db");
 
-function quickstart(exportedUser) {
-  console.log("exportedUser", exportedUser);
+function quickstart(nameToExport) {
   // BEGINNING OF AUTH SECTION
-
   /**
    * If modifying scopes, delete credentials.json.
    * Script will recreate it with new permissions.
@@ -110,8 +108,9 @@ function quickstart(exportedUser) {
           const slides = google.slides({ version: "v1", auth });
 
           // Define what to subsitute
-          getProfiles().then(profiles => {
-            const googleSlideRequest = generateGoogleSlideRequest(profiles);
+          getProfiles(nameToExport).then(profiles => {
+            console.log("profiles in get profiles", profiles);
+            const googleSlideRequest = generateGoogleSlideRequest(profiles[0]);
             // Execute the requests for this presentation.
             slides.presentations.batchUpdate(
               {
@@ -132,32 +131,37 @@ function quickstart(exportedUser) {
     );
   }
 
-  function getProfiles(name) {
-    console.log("getprofilename", name);
+  function getProfiles(exportedName) {
+    console.log("exportedName", exportedName);
     return new Promise((resolve, reject) => {
       db.connect().then(conn => {
         const appdb = conn.db("appdb");
         const collection = appdb.collection("profiles");
 
-        const profiles = collection.find({}).toArray((err, profiles) => {
-          if (err) {
-            reject(err);
-            return;
-          }
+        const profiles = collection
+          .find({ name: exportedName })
+          .toArray((err, profiles) => {
+            if (err) {
+              reject(err);
+              return;
+            }
 
-          resolve(profiles);
-          console.log("profiles", profiles);
-          return;
-        });
+            resolve(profiles);
+            console.log("profiles", profiles);
+            return;
+          });
       });
     });
   }
 
-  getProfiles(exportedUser);
+  console.log("5");
+  console.log("nameToExport", nameToExport);
+  // getProfiles(nameToExport);
 }
 
 function generateGoogleSlideRequest(profile) {
   const googleSlideRequest = [];
+  console.log("profile", profile.experience);
   profile.experience.forEach((experience, index) => {
     googleSlideRequest.push({
       replaceAllText: {
@@ -249,7 +253,6 @@ function generateGoogleSlideRequest(profile) {
     }
   });
 
-  console.log("googleSlideRequest", googleSlideRequest);
   return googleSlideRequest;
 }
 
