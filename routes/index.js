@@ -145,18 +145,18 @@ router.post("/formSubmit", function(req, res) {
 });
 
 router.get("/export/:name", function(req, res) {
-  // function exportData() {
-  //   return new Promise((resolve, reject) => {
-  //     quickstart(req.params.name);
-  //     return;
-  //   });
+  quickstart(req.params.name);
+  // async function exportData() {
+  //   let exportedSlide = await quickstart(req.params.name);
+  //   console.log("googleSlideUrl", exportedSlide);
+  //   // opn(exportedSlide);
   // }
 
-  quickstart(req.params.name).then(res => {
-    console.log("googleSlideUrl", res);
-    opn(res);
-    return;
-  });
+  // exportData();
+  // quickstart(req.params.name).then(res => {
+  //   opn(res);
+  //   return;
+  // });
   // exportData().then(res => {
   // });
 });
