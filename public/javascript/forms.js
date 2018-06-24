@@ -12,6 +12,10 @@ var toolsID = 1;
 var skillsChosen;
 var toolsChosen;
 
+if (window.location.href === "http://localhost:3000/formSubmit") {
+  document.getElementById("formFeedback").classList.remove("notSubmitted");
+}
+
 function removeElement(id) {
   var expDiv = document.getElementById("experience" + id);
   expDiv.parentNode.removeChild(expDiv);

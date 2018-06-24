@@ -264,3 +264,19 @@ button:disabled {
   color: white;
   margin-bottom: 30px;
 }
+
+#formFeedback {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #29d84f;
+}
+
+#formFeedback > i {
+  color: #29d84f;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.notSubmitted {
+  display: none;
+}
