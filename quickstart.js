@@ -118,7 +118,7 @@ function quickstart(nameToExport) {
             console.log("profiles in get profiles", profiles);
             googleSlideUrl =
               "https://docs.google.com/presentation/d/" + presentationCopyId;
-            opn(googleSlideUrl);
+
             const googleSlideRequest = generateGoogleSlideRequest(profiles[0]);
             // Execute the requests for this presentation.
             slides.presentations.batchUpdate(
@@ -265,6 +265,7 @@ function generateGoogleSlideRequest(profile) {
     }
   });
   console.log("#9: end of googleslidesrequest function");
+  opn(googleSlideUrl);
   return googleSlideRequest;
 }
 

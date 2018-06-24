@@ -146,19 +146,8 @@ router.post("/formSubmit", function(req, res) {
 
 router.get("/export/:name", function(req, res) {
   quickstart(req.params.name);
-  // async function exportData() {
-  //   let exportedSlide = await quickstart(req.params.name);
-  //   console.log("googleSlideUrl", exportedSlide);
-  //   // opn(exportedSlide);
-  // }
-
-  // exportData();
-  // quickstart(req.params.name).then(res => {
-  //   opn(res);
-  //   return;
-  // });
-  // exportData().then(res => {
-  // });
+  // res.sendFile(path.join(__dirname, "../public/export.html"));
+  res.end();
 });
 
 router.get("/profile", function(req, res) {
