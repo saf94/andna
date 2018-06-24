@@ -3,8 +3,9 @@ const util = require("util");
 const fs = require("fs-extra");
 const multer = require("multer");
 const path = require("path");
+const opn = require("opn");
 const { MongoClient, ObjectId } = require("mongodb");
-const { quickstart } = require("../quickstart.js");
+const { quickstart, googleSlideUrl } = require("../quickstart");
 
 const router = express.Router();
 const url = "mongodb://localhost:27017/appdb";
@@ -81,6 +82,14 @@ router.get("/bio", function(req, res) {
   res.sendFile(path.join(__dirname, "../public/bio.html"));
 });
 router.get("/squads", function(req, res) {
+  MongoClient.connect(
+    url,
+    function(err, db) {
+      if (err) console.log(err);
+
+      db.collection("profiles").find({}, () => {});
+    }
+  );
   res.sendFile(path.join(__dirname, "../public/squads.html"));
 });
 
@@ -124,13 +133,35 @@ router.post("/formSubmit", function(req, res) {
     function(err, db) {
       if (err) console.log(err);
 
-      db.collection("profiles").insert(profile, () => {
+      db.collection("profiles").insert(profile, function() {
         // res.json({ message: "ok" });
       });
     }
   );
 
   console.log("profile", profile);
-  quickstart();
+  // quickstart();
   res.sendFile(path.join(__dirname, "../public/index.html"));
+});
+
+router.get("/export/:name", function(req, res) {
+  quickstart(req.params.name);
+  // res.sendFile(path.join(__dirname, "../public/export.html"));
+  res.end();
+});
+
+router.get("/profile", function(req, res) {
+  MongoClient.connect(
+    url,
+    function(err, db) {
+      if (err) console.log(err);
+
+      db.collection("profiles")
+        .find({})
+        .toArray((err, docs) => {
+          console.log(docs);
+          res.json(docs);
+        });
+    }
+  );
 });

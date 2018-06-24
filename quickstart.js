@@ -2,10 +2,12 @@ const fs = require("fs");
 const readline = require("readline");
 const { google } = require("googleapis");
 const db = require("./db");
+const opn = require("opn");
+let googleSlideUrl;
 
-function quickstart() {
+function quickstart(nameToExport) {
+  console.log("#1: start of quickstart function");
   // BEGINNING OF AUTH SECTION
-
   /**
    * If modifying scopes, delete credentials.json.
    * Script will recreate it with new permissions.
@@ -85,6 +87,7 @@ function quickstart() {
   const fileId = "17kQGK9rBRDTYrzk2s4L-nA1qXUt4htg-UGgNoSBiAj0";
 
   function gapiDrive(auth) {
+    console.log("#2: start of gapidrive function");
     const drive = google.drive({ version: "v3", auth });
     drive.files.copy(
       {
@@ -106,10 +109,16 @@ function quickstart() {
         });
 
         function gapiSlides(auth) {
+          console.log("#3: start of gapiSlides function");
           const slides = google.slides({ version: "v1", auth });
 
           // Define what to subsitute
-          getProfiles().then(profiles => {
+          getProfiles(nameToExport).then(profiles => {
+            console.log("#4: .then after getProfiles function");
+            console.log("profiles in get profiles", profiles);
+            googleSlideUrl =
+              "https://docs.google.com/presentation/d/" + presentationCopyId;
+
             const googleSlideRequest = generateGoogleSlideRequest(profiles[0]);
             // Execute the requests for this presentation.
             slides.presentations.batchUpdate(
@@ -129,33 +138,42 @@ function quickstart() {
         }
       }
     );
+    console.log("#5: end of gapidrive");
   }
 
-  function getProfiles() {
+  function getProfiles(exportedName) {
+    console.log("#6: Beginning of getProfiles function");
+    console.log("exportedName", exportedName);
     return new Promise((resolve, reject) => {
       db.connect().then(conn => {
         const appdb = conn.db("appdb");
         const collection = appdb.collection("profiles");
 
-        const profiles = collection.find({}).toArray((err, profiles) => {
-          if (err) {
-            reject(err);
-            return;
-          }
+        const profiles = collection
+          .find({ name: exportedName })
+          .toArray((err, profiles) => {
+            if (err) {
+              reject(err);
+              return;
+            }
 
-          resolve(profiles);
-          console.log(profiles);
-          return;
-        });
+            resolve(profiles);
+            console.log("profiles", profiles);
+            return;
+          });
       });
     });
   }
 
-  getProfiles();
+  console.log("nameToExport", nameToExport);
+  // getProfiles(nameToExport);
+  console.log("#7: end of quickstart function");
 }
 
 function generateGoogleSlideRequest(profile) {
+  console.log("#8: beginnging of googleslidesrequest function");
   const googleSlideRequest = [];
+  console.log("profile", profile.experience);
   profile.experience.forEach((experience, index) => {
     googleSlideRequest.push({
       replaceAllText: {
@@ -246,7 +264,8 @@ function generateGoogleSlideRequest(profile) {
       replaceText: profile.summary
     }
   });
-
+  console.log("#9: end of googleslidesrequest function");
+  opn(googleSlideUrl);
   return googleSlideRequest;
 }
 
