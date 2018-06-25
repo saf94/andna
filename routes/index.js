@@ -1,6 +1,6 @@
 const express = require("express");
 const util = require("util");
-const fs = require("fs-extra");
+const fs = require("fs");
 const multer = require("multer");
 const path = require("path");
 const { MongoClient, ObjectId } = require("mongodb");
@@ -8,7 +8,7 @@ const { quickstart, googleSlideUrl } = require("../quickstart");
 
 const router = express.Router();
 const url = "mongodb://localhost:27017/appdb";
-const upload = multer({ limits: { fileSize: 2000000 }, dest: "uploads/" });
+const upload = multer({ limits: { fileSize: 2000000 }, dest: "public/images" });
 
 module.exports = router;
 
@@ -18,39 +18,20 @@ router.get("/", function(req, res) {
 });
 // Form POST action handler
 router.post("/uploadpicture", upload.single("picture"), function(req, res) {
-  if (req.file == null) {
-    // If Submit was accidentally clicked with no file selected...
-    res.render("index", { title: "Please select a picture file to submit!" });
-  } else {
-    MongoClient.connect(
-      url,
-      function(err, db) {
-        // read the img file from tmp in-memory location
-        var newImg = fs.readFileSync(req.file.path);
-        // encode the file as a base64 string.
-        var encImg = newImg.toString("base64");
-        // define your new document
-        var newItem = {
-          description: req.body.description,
-          contentType: req.file.mimetype,
-          size: req.file.size,
-          img: Buffer(encImg, "base64")
-        };
-        db.collection("profiles").insert(newItem, function(err, result) {
-          if (err) {
-            console.log(err);
-          }
-          var newoid = new ObjectId(result.ops[0]._id);
-          fs.remove(req.file.path, function(err) {
-            if (err) {
-              console.log(err);
-            }
-            res.render("index", { title: "Thanks for the Picture!" });
-          });
-        });
-      }
-    );
-  }
+  // console.log("req.body", req.body);
+  const tempPath = req.file.path;
+  const targetPath = path.join(__dirname, "../public/images/image.png");
+
+  console.log("tempPath", tempPath);
+  console.log("targetPath", targetPath);
+  fs.rename(tempPath, targetPath, err => {
+    if (err) return handleError(err, res);
+
+    res.status(200).contentType("text/plain");
+    // .send("File uploaded!")
+    // .end("File uploaded!");
+    return res.redirect("back");
+  });
 });
 
 router.get("/picture/:picture", function(req, res) {
@@ -164,3 +145,5 @@ router.get("/profile", function(req, res) {
     }
   );
 });
+
+router.get("/imageUpload", function(req, res) {});
