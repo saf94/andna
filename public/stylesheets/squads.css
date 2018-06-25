@@ -1,0 +1,118 @@
+@font-face {
+    src: url(../Fonts/Poppins-Medium.ttf);
+    font-family: Poppins;
+}
+
+.container {
+    max-width: 1400px !important;
+}
+
+td {
+    width: 25%;
+    float: none !important;
+    text-align: center;
+}
+
+th {
+  background: #ec4746;  
+  text-align: center !important;
+  color: white;
+}
+
+table {
+    border-spacing: 5px !important;
+    border-collapse: separate !important;
+    margin: auto;
+    min-width: 90%;
+    min-height: 300px;
+    max-width: 90%;
+    max-height: 300px;
+}
+
+.col-sm-12-md-6 {
+    width: 650px !important;
+}
+
+td {
+    width: 300px;
+}
+
+body {
+    font-size: 14px !important;
+    box-sizing: border-box;
+}
+
+#holder {
+    margin: auto;
+
+}
+
+button {
+      cursor: pointer;
+      min-width: 94px;
+      height: 36px;
+      border-radius: 2px;
+      border-color: transparent;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-align: center;
+      color: #ffffff;
+      background-color: #273041  ;
+      /* #273041 */
+      padding: 3px 15px;
+}
+button:disabled {
+    background-color: #a5a8ae;
+    color: white;
+}
+
+.jumbotron-billboard .img {
+    margin-bottom: 0px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+  }
+  
+  .jumbotron h2 {
+    margin-top: 0;
+  }
+  
+  .jumbotron {
+    position: relative;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    background-image: url('../images/ANDback.png');
+    background-repeat: no-repeat;
+    height: 470px;
+    object-fit: none;
+  }
+  
+  .jumbotron .container {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .jumbotron > .container {
+    text-align: center;
+  }
+  
+  .jumbotron > .container > h2 {
+    font-size: 72px;
+    color: white;
+  }
+
+  #AndLogo {
+    width: 350px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    margin-top: -80px;
+  }
