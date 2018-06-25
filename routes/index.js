@@ -30,6 +30,7 @@ router.post("/uploadpicture", upload.single("picture"), function(req, res) {
     res.status(200).contentType("text/plain");
     // .send("File uploaded!")
     // .end("File uploaded!");
+    return res.redirect("back");
   });
 });
 
