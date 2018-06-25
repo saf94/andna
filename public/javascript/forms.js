@@ -62,9 +62,7 @@ document.getElementById("addExp").addEventListener("click", function() {
       '<div class="form-group"><label for="LinkedIn">Summary</label>' +
       '<textarea type="roleSummary" class="form-control" id="roleSummary' +
       expId +
-      '" placeholder="Summary of responsibilities" name="roleSummary' +
-      expId +
-      '" maxlength="520"></textarea>' +
+      '" placeholder="Summary of responsibilities" name="roleSummary" maxlength="300"></textarea>' +
       '<div id="sumNum' +
       expId +
       '" class="counters"></div>' +
