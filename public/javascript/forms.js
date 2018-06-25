@@ -38,38 +38,71 @@ function removeTool(id) {
 }
 
 document.getElementById("addExp").addEventListener("click", function() {
-  if (document.getElementsByClassName("sectionBackground").length < 6) {
+  if (expId < 4) {
     document.getElementById("newExperience").innerHTML +=
       '<section class="sectionBackground" id="experience' +
       expId +
       '"><h3>Experiences:</h3><div class="form-group"><label for="email">Role:</label><input type="role" class="form-control" id="role' +
       expId +
-      '" placeholder="Scrum master/PA/PD" name="role"></div><div class="form-group"><label for="title">Location</label><input type="location" class="form-control" id="location' +
+      '" placeholder="Scrum master/PA/PD" name="role" maxlength="35">' +
+      '<div id="roleNum' +
       expId +
-      '" placeholder="E.g. Avios/Halfords/BA" name="location"></div><div class="form-group"><label for="LinkedIn">Summary</label><input type="roleSummary" class="form-control" id="roleSummary' +
+      '"class="counters"></div></div>' +
+      '<div class="form-group"><label for="title">Location</label><input type="location" class="form-control" id="location' +
       expId +
-      '" placeholder="Summary of responsibilities" name="roleSummary"><button type="button" id="deleteExp" onclick="removeElement(' +
+      '" placeholder="E.g. Avios/Halfords/BA" name="location" maxlength="25">' +
+      '<div id="locationNum' +
       expId +
-      ')"> - </button></section>';
-    // document.documentElement.innerHTML +=
-    //   '<script>validate(document.getElementById("roleSummary' +
-    //   expId +
-    //   '"), document.getElementById("sumNum' +
-    //   expId +
-    //   '"), 300);</script>';
-    // document.documentElement.innerHTML +=
-    //   '<script>validate(document.getElementById("role' +
-    //   expId +
-    //   '"), document.getElementById("roleNum' +
-    //   expId +
-    //   '"), 35);</script>';
-    // document.documentElement.innerHTML +=
-    //   '<script>validate(document.getElementById("location' +
-    //   expId +
-    //   '"), document.getElementById("locationNum' +
-    //   expId +
-    //   '"), 25);</script>';
+      '"class="counters"></div></div>' +
+      "</div>" +
+      '<div class="form-group"><label for="LinkedIn">Summary</label>' +
+      '<textarea type="roleSummary" class="form-control" id="roleSummary' +
+      expId +
+      '" placeholder="Summary of responsibilities" name="roleSummary" maxlength="520"></textarea>' +
+      '<div id="sumNum' +
+      expId +
+      '" class="counters"></div>' +
+      '</div><button type="button" id="deleteExp" onclick="removeElement(' +
+      expId +
+      ')"> - </button></div></section>';
+
     expId++;
+
+    validate(
+      document.getElementById("roleSummary"),
+      document.getElementById("sumNum"),
+      300
+    );
+    validate(
+      document.getElementById("role"),
+      document.getElementById("roleNum"),
+      35
+    );
+    validate(
+      document.getElementById("location"),
+      document.getElementById("locationNum"),
+      25
+    );
+
+    for (var i = 2; i < expId; ++i) {
+      validate(
+        document.getElementById("roleSummary" + i),
+        document.getElementById("sumNum" + i),
+        300
+      );
+
+      validate(
+        document.getElementById("role" + i),
+        document.getElementById("roleNum" + i),
+        35
+      );
+
+      validate(
+        document.getElementById("location" + i),
+        document.getElementById("locationNum" + i),
+        25
+      );
+    }
   }
 });
 
@@ -253,6 +286,10 @@ function validate(val, fieldId, limit) {
   function validateChar(val, fieldId, limit) {
     var text_length = val.value.length;
     var text_remaining = limit - text_length;
+    console.log("val " + val);
+    console.log("fieldId " + fieldId);
+    console.log("limit " + limit);
+    console.log("text remaining " + text_remaining);
     $(fieldId).html(text_remaining + " characters remaining");
   }
 }

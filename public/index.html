@@ -79,7 +79,7 @@
 					<span>Choose a file</span>
 				</label>
 				<!-- <input class="form-control" type="text" name="description" placeholder="Description or Message"> -->
-				<input class="btn btn-primary" id="imageSubmit" type="submit" value="submit">
+				<input class="btn btn-primary" id="imageSubmit" type="submit" value="upload">
 			</form>
 		</section>
 
@@ -127,10 +127,11 @@
 						<label for="LinkedIn">Summary</label>
 						<textarea type="roleSummary" class="form-control" id="roleSummary" placeholder="Summary of responsibilities" name="roleSummary" maxlength="520"></textarea>
 						<div id="sumNum" class="counters"></div>
+					</div>
 				</section>
-				</div>
+			</div>
 
-				<button type="button" id="addExp">Add</button>
+				<button type="button" id="addExp" onsubmit="return false">Add</button>
 
 				<div id="keySkills">
 					<section class="sectionBackground" id="keySkills">
