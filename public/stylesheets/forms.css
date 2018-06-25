@@ -155,8 +155,18 @@ label > span {
   
 }
 
+#Summary, ::placeholder {
+  position:top;
 
+}
 
+.counters {
+  float: right;
+  color: #323232;
+}
+#Summary,  #roleSummary{
+  height: 100px !important;
+}
 /* * { box-sizing: border-box; } */
 
 .autocomplete {
