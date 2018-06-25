@@ -123,6 +123,10 @@ form > label {
   padding: 85px;
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: 100%;
+  width: 220px;
+  height: 220px;
+  margin-right: 30px;
 }
 
 #imageSubmit {
