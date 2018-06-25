@@ -3,7 +3,6 @@ const util = require("util");
 const fs = require("fs-extra");
 const multer = require("multer");
 const path = require("path");
-const opn = require("opn");
 const { MongoClient, ObjectId } = require("mongodb");
 const { quickstart, googleSlideUrl } = require("../quickstart");
 
