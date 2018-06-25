@@ -3,6 +3,8 @@ const util = require("util");
 const fs = require("fs");
 const multer = require("multer");
 const path = require("path");
+const { google } = require("googleapis");
+const readline = require("readline");
 const { MongoClient, ObjectId } = require("mongodb");
 const { quickstart, googleSlideUrl } = require("../quickstart");
 
@@ -24,14 +26,109 @@ router.post("/uploadpicture", upload.single("picture"), function(req, res) {
 
   console.log("tempPath", tempPath);
   console.log("targetPath", targetPath);
-  fs.rename(tempPath, targetPath, err => {
-    if (err) return handleError(err, res);
 
-    res.status(200).contentType("text/plain");
-    // .send("File uploaded!")
-    // .end("File uploaded!");
-    return res.redirect("back");
+  const TOKEN_PATH = "credentials.json";
+  const SCOPES = [
+    "https://www.googleapis.com/auth/presentations",
+    "https://www.googleapis.com/auth/drive"
+  ];
+
+  // Load client secrets from a local file.
+  fs.readFile("client_secret.json", (err, content) => {
+    if (err) return console.log("Error loading client secret file:", err);
+    // Authorize a client with credentials, then call the Google Slides API.
+    authorize(JSON.parse(content), imageUpload);
+    //  authorize(JSON.parse(content), gapiSlides);
   });
+
+  /**
+   * Create an OAuth2 client with the given credentials, and then execute the
+   * given callback function.
+   * @param {Object} credentials The authorization client credentials.
+   * @param {function} callback The callback to call with the authorized client.
+   */
+  function authorize(credentials, callback) {
+    const { client_secret, client_id, redirect_uris } = credentials.installed;
+    const oAuth2Client = new google.auth.OAuth2(
+      client_id,
+      client_secret,
+      redirect_uris[0]
+    );
+
+    // Check if we have previously stored a token.
+    fs.readFile(TOKEN_PATH, (err, token) => {
+      if (err) return getNewToken(oAuth2Client, callback);
+      oAuth2Client.setCredentials(JSON.parse(token));
+      callback(oAuth2Client);
+    });
+  }
+
+  /**
+   * Get and store new token after prompting for user authorization, and then
+   * execute the given callback with the authorized OAuth2 client.
+   * @param {google.auth.OAuth2} oAuth2Client The OAuth2 client to get token for.
+   * @param {getEventsCallback} callback The callback for the authorized client.
+   */
+  function getNewToken(oAuth2Client, callback) {
+    const authUrl = oAuth2Client.generateAuthUrl({
+      access_type: "offline",
+      scope: SCOPES
+    });
+    console.log("Authorize this app by visiting this url:", authUrl);
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+    rl.question("Enter the code from that page here: ", code => {
+      rl.close();
+      oAuth2Client.getToken(code, (err, token) => {
+        if (err) return callback(err);
+        oAuth2Client.setCredentials(token);
+        // Store the token to disk for later program executions
+        fs.writeFile(TOKEN_PATH, JSON.stringify(token), err => {
+          if (err) console.error(err);
+          console.log("Token stored to", TOKEN_PATH);
+        });
+        callback(oAuth2Client);
+      });
+    });
+  }
+
+  function imageUpload(auth) {
+    const drive = google.drive({ version: "v3", auth });
+    var fileMetadata = {
+      name: "image.png"
+    };
+    var media = {
+      mimeType: "image/png",
+      body: fs.createReadStream("public/images/image.png")
+    };
+    drive.files.create(
+      {
+        resource: fileMetadata,
+        media: media,
+        fields: "id"
+      },
+      function(err, file) {
+        if (err) {
+          // Handle error
+          console.error(err);
+        } else {
+          console.log("File Id: ", file.id);
+        }
+      }
+    );
+
+    fs.rename(tempPath, targetPath, err => {
+      if (err) return handleError(err, res);
+
+      res.status(200).contentType("text/plain");
+      // .send("File uploaded!")
+      // .end("File uploaded!");
+      return res.redirect("back");
+    });
+  }
+  imageUpload();
 });
 
 router.get("/picture/:picture", function(req, res) {
@@ -100,6 +197,7 @@ router.post("/formSubmit", function(req, res) {
 
   const profile = {
     name: req.body.name,
+    picture: req.body.picture,
     role: req.body.title,
     linkedin: req.body.LinkedIn,
     summary: req.body.Summary,
@@ -118,9 +216,8 @@ router.post("/formSubmit", function(req, res) {
       });
     }
   );
-
+  console.log("req.body", req.body);
   console.log("profile", profile);
-  // quickstart();
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
