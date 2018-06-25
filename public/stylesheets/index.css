@@ -1,6 +1,6 @@
 @font-face {
   font-family: Poppins;
-  src: url(/fonts/Poppins-Medium.ttf);
+  src: url(/Fonts/Poppins-Medium.ttf);
 }
 
 body {
@@ -119,7 +119,7 @@ input[type=file] {
 }
 
 form > label {
-  background-image: url('../images/Jenkins.png');
+  background-image: url('../images/image.png');
   padding: 85px;
   background-repeat: no-repeat;
   background-position: center;
