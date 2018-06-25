@@ -1,15 +1,15 @@
-(express = require("express")),
-  (router = express.Router()),
-  (MongoClient = require("mongodb").MongoClient),
-  (ObjectId = require("mongodb").ObjectId),
-  (fs = require("fs-extra")),
-  (url = "mongodb://localhost:27017/appdb"),
-  (multer = require("multer")),
-  (util = require("util")),
-  (upload = multer({ limits: { fileSize: 2000000 }, dest: "uploads/" }));
+const express = require("express");
+const util = require("util");
+const fs = require("fs-extra");
+const multer = require("multer");
+const path = require("path");
+const opn = require("opn");
+const { MongoClient, ObjectId } = require("mongodb");
+const { quickstart, googleSlideUrl } = require("../quickstart");
 
-var path = require("path");
-const quickstart = require("../quickstart.js");
+const router = express.Router();
+const url = "mongodb://localhost:27017/appdb";
+const upload = multer({ limits: { fileSize: 2000000 }, dest: "uploads/" });
 
 module.exports = router;
 
@@ -82,21 +82,50 @@ router.get("/bio", function(req, res) {
   res.sendFile(path.join(__dirname, "../public/bio.html"));
 });
 router.get("/squads", function(req, res) {
+  MongoClient.connect(
+    url,
+    function(err, db) {
+      if (err) console.log(err);
+
+      db.collection("profiles").find({}, () => {});
+    }
+  );
   res.sendFile(path.join(__dirname, "../public/squads.html"));
 });
 
 router.post("/formSubmit", function(req, res) {
+  let experience = [
+    {
+      titleLocation: `${req.body.role1} , ${req.body.location1}`,
+      roleSummary: req.body.roleSummary1
+    }
+  ];
+
+  if (req.body.role2) {
+    experience.push({
+      titleLocation: `${req.body.role2} , ${req.body.location2}`,
+      roleSummary: req.body.roleSummary2
+    });
+  }
+
+  if (req.body.role3) {
+    experience.push({
+      titleLocation: `${req.body.role3} , ${req.body.location3}`,
+      roleSummary: req.body.roleSummary3
+    });
+  }
+
+  const skills = req.body.skills.split(", ");
+  const tools = req.body.tools.split(", ");
+
   const profile = {
     name: req.body.name,
     role: req.body.title,
     linkedin: req.body.LinkedIn,
     summary: req.body.Summary,
-    experience: {
-      titleLocation: `${req.body.role} , ${req.body.location}`,
-      roleSummary: req.body.roleSummary
-    },
-    skills: req.body.skills,
-    tools: req.body.tools
+    experience: experience,
+    skills: skills,
+    tools: tools
   };
 
   MongoClient.connect(
@@ -104,13 +133,35 @@ router.post("/formSubmit", function(req, res) {
     function(err, db) {
       if (err) console.log(err);
 
-      db.collection("profiles").insert(profile, () => {
+      db.collection("profiles").insert(profile, function() {
         // res.json({ message: "ok" });
       });
     }
   );
 
-  // console.log("profile", profile);
-  quickstart();
+  console.log("profile", profile);
+  // quickstart();
   res.sendFile(path.join(__dirname, "../public/index.html"));
+});
+
+router.get("/export/:name", function(req, res) {
+  quickstart(req.params.name);
+  // res.sendFile(path.join(__dirname, "../public/export.html"));
+  res.end();
+});
+
+router.get("/profile", function(req, res) {
+  MongoClient.connect(
+    url,
+    function(err, db) {
+      if (err) console.log(err);
+
+      db.collection("profiles")
+        .find({})
+        .toArray((err, docs) => {
+          console.log(docs);
+          res.json(docs);
+        });
+    }
+  );
 });

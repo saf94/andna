@@ -1,268 +1,282 @@
 @font-face {
-    font-family: Poppins;
-    src: url(/fonts/Poppins-Medium.ttf);
-  }
+  font-family: Poppins;
+  src: url(/fonts/Poppins-Medium.ttf);
+}
+
+body {
+  font-family: Poppins;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.bg-2 {
+  background-color: #ec4746;
+  /* Dark Blue */
+  color: #ffffff;
+}
+
+.bg-3 {
+  background-color: #ffffff;
+  /* White */
+  color: #555555;
+}
+
+.myProfile {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.jenkins {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+.jumbotron-billboard .img {
+  margin-bottom: 0px;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+.jumbotron h2 {
+  margin-top: 0;
+}
+
+.jumbotron {
+  position: relative;
+  padding-top: 200px;
+  padding-bottom: 200px;
+  background-image: url('https://s3-eu-west-1.amazonaws.com/and-welcome-dev-bucket/Kingfisher.jpeg');
+  background-repeat: no-repeat;
+  height: 470px;
+  object-fit: none;
+}
+
+.jumbotron .container {
+  position: relative;
+  z-index: 2;
   
-  body {
-    font-family: Poppins;
-  }
-  
-  a {
-    color: #00B7FF;
-  }
-  
-  .bg-2 {
-    background-color: #ec4746;
-    /* Dark Blue */
-    color: #ffffff;
-  }
-  
-  .bg-3 {
-    background-color: #ffffff;
-    /* White */
-    color: #555555;
-  }
-  
-  .myProfile {
-    text-align: center;
-    padding-bottom: 20px;
-  }
-  
-  .jenkins {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 10px;
-  }
-  
-  .jumbotron-billboard .img {
-    margin-bottom: 0px;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-  }
-  
-  .jumbotron h2 {
-    margin-top: 0;
-  }
-  
+}
+
+.jumbotron > .container {
+  text-align: center;
+}
+
+.jumbotron > .container > h2 {
+  font-size: 72px;
+  color: white;
+}
+
+.sectionBackground {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+}
+
+#deleteExp {
+  margin-top: 15px;
+  height: 20px;
+  line-height: 10px;
+  background-color: #fff;
+  color: #FFC800;
+  border-color: #FFC800;
+  border-radius: 15%;
+  text-align: center;
+}
+
+#addExp {
+  background-color: #FFC800;
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 40px;
+  padding: 6px;
+  border-radius: 15%;
+}
+
+#imageForm {
+  display: flex;
+  justify-content: center;
+}
+
+input[type=file] {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+form > label {
+  background-image: url('../images/Jenkins.png');
+  padding: 85px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#imageSubmit {
+  margin: 80px 0px;
+}
+
+label > span {
+  visibility: hidden;
+}
+
+#AndLogo {
+  width: 350px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  margin-top: -80px;
+}
+
+/* #navbarSupportedContent > ul {
+  margin-left: 33.5%;
+
+} */
+
+@media screen and (max-width: 768px) {
   .jumbotron {
-    position: relative;
-    padding-top: 200px;
-    padding-bottom: 200px;
-    background-image: url('https://s3-eu-west-1.amazonaws.com/and-welcome-dev-bucket/Kingfisher.jpeg');
-    background-repeat: no-repeat;
-    height: 470px;
-    object-fit: none;
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
   
-  .jumbotron .container {
-    position: relative;
-    z-index: 2;
-    
-  }
+}
+
+/* * { box-sizing: border-box; } */
+
+.autocomplete {
+  /*the container must be positioned relative:*/
+  width: 100%;
+  position: relative;
+  display: inline-block;
+}
+
+.autocomplete-items {
+  position: relative;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9; 
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+
+button {
+  cursor: pointer;
+  min-width: 94px;
+  height: 36px;
+  border-radius: 2px;
+  border-color: transparent;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #273041;
+  padding: 3px 15px;
+  line-height: 5px;
+}
+
+button:disabled {
+  background-color: #a5a8ae;
+  color: white;
+}
+
+.skill, .tool {
+  background-color: #273041;
+  color: white;
+  border-radius: 4px;
+  min-width: 150px;
+  max-width: 150px;
+  min-height: 40px;
+  max-height: 40px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.skill p, .tool p {
+  line-height:  40px;
+}
+
+#skilly, #tooly{
+  position: relative;
+  background-color: #ec4746;
+  color: white;
+  border-radius: 50%;
+  float:right;
+  min-width: 20px !important;
+  min-height: 20px !important;
+  max-height: 20px !important;
+  max-width: 20px !important;
+  text-align: center;
+  padding:0;
+  top: -65px !important;
+  left: 6px !important;
+}
+
+#skillz, #toolz{
+  /* display: inline-block !important; */
+  width: 100%;
+  float: left;
+  position: relative;
   
-  .jumbotron > .container {
-    text-align: center;
-  }
-  
-  .jumbotron > .container > h2 {
-    font-size: 72px;
-    color: white;
-  }
-  
-  .sectionBackground {
-    background-color: #f9f9f9;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 15px;
-  }
-  
-  #deleteExp {
-    margin-top: 15px;
-    height: 20px;
-    line-height: 10px;
-    background-color: #fff;
-    color: #FFC800;
-    border-color: #FFC800;
-    border-radius: 15%;
-    text-align: center;
-  }
-  
-  #addExp {
-    background-color: #FFC800;
-    color: #fff;
-    font-size: 20px;
-    margin-bottom: 40px;
-    padding: 6px;
-    border-radius: 15%;
-  }
-  
-  #imageForm {
-    display: flex;
-    justify-content: center;
-  }
-  
-  input[type=file] {
-      width: 0.1px;
-      height: 0.1px;
-      opacity: 0;
-      overflow: hidden;
-      position: absolute;
-      z-index: -1;
-  }
-  
-  form > label {
-    background-image: url('../images/Jenkins.png');
-    padding: 85px;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  
-  #imageSubmit {
-    margin: 80px 0px;
-  }
-  
-  label > span {
-    visibility: hidden;
-  }
-  
-  #AndLogo {
-    width: 350px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 30px;
-    margin-top: -80px;
-  }
-  
-  #navbarSupportedContent > ul {
-    margin-left: 33.5%;
-  
-  }
-  
-  @media screen and (max-width: 768px) {
-    .jumbotron {
-      padding-top: 60px;
-      padding-bottom: 60px;
-    }
-    
-  }
-  
-  
-  
-  /* * { box-sizing: border-box; } */
-  
-  .autocomplete {
-    /*the container must be positioned relative:*/
-    width: 100%;
-    position: relative;
-    display: inline-block;
-  }
-  
-  .autocomplete-items {
-    position: relative;
-    border: 1px solid #d4d4d4;
-    border-bottom: none;
-    border-top: none;
-    /*position the autocomplete items to be the same width as the container:*/
-    top: 100%;
-    left: 0;
-    right: 0;
-  
-  }
-  .autocomplete-items div {
-    padding: 10px;
-    cursor: pointer;
-    background-color: #fff; 
-    border-bottom: 1px solid #d4d4d4; 
-  }
-  .autocomplete-items div:hover {
-    /*when hovering an item:*/
-    background-color: #e9e9e9; 
-  }
-  .autocomplete-active {
-    /*when navigating through the items using the arrow keys:*/
-    background-color: DodgerBlue !important; 
-    color: #ffffff; 
-  }
-  
-  button {
-    cursor: pointer;
-    min-width: 94px;
-    height: 36px;
-    border-radius: 2px;
-    border-color: transparent;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
-    font-size: 14px;
-    letter-spacing: 0.5px;
-    text-align: center;
-    color: #ffffff;
-    background-color: #273041;
-    padding: 3px 15px;
-    line-height: 5px;
-  }
-  
-  button:disabled {
-    background-color: #a5a8ae;
-    color: white;
-  }
-  
-  .skill, .tool {
-    background-color: #273041;
-    color: white;
-    border-radius: 4px;
-    min-width: 150px;
-    max-width: 150px;
-    min-height: 40px;
-    max-height: 40px;
-    text-align: center;
-    margin-top: 30px;
-  }
-  
-  .skill p, .tool p {
-    line-height:  40px;
-  }
-  
-  #skilly, #tooly{
-    position: relative;
-    background-color: #ec4746;
-    color: white;
-    border-radius: 50%;
-    float:right;
-    min-width: 20px !important;
-    min-height: 20px !important;
-    max-height: 20px !important;
-    max-width: 20px !important;
-    text-align: center;
-    padding:0;
-    top: -65px !important;
-    left: 6px !important;
-  }
-  
-  #skillz, #toolz{
-    /* display: inline-block !important; */
-    width: 100%;
-    float: left;
-    position: relative;
-    
-  }
-  
-  #skillz div, #toolz div{
-    float: left;
-    margin-left: 10px;
-    position: relative;
-  }
-  
-  #btnSubmit {
-    float: right;
-    background-color: #ec4746;
-    color: white;
-    margin-bottom: 30px;
-  }
+}
+
+#skillz div, #toolz div{
+  float: left;
+  margin-left: 10px;
+  position: relative;
+}
+
+#btnSubmit {
+  float: right;
+  background-color: #ec4746;
+  color: white;
+  margin-bottom: 30px;
+}
+
+#formFeedback {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #29d84f;
+}
+
+#formFeedback > i {
+  color: #29d84f;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.notSubmitted {
+  display: none;
+}

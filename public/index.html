@@ -10,6 +10,7 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
 	 crossorigin="anonymous">
+	 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	<link rel="stylesheet" href="/stylesheets/index.css">
 	<script src="http://code.jquery.com/jquery-1.5.js"></script>
 </head>
@@ -17,7 +18,9 @@
 <body>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="http://localhost:3000/"><img src="/images/ANDlogo.png" alt="AND Digital logo" height="36"></a>
+			<a class="navbar-brand" href="http://localhost:3000/">
+				<img src="/images/ANDlogo.png" alt="AND Digital logo" height="36">
+			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 			 aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -44,26 +47,37 @@
 	<section>
 		<div class="jumbotron jumbotron-billboard">
 			<div class="container">
-				<img src="https://static.andigital.com/wp-content/uploads/2017/05/02163341/AND_LOGO_RGB_ON_WHITE.png" id="AndLogo"/>
+				<img src="https://static.andigital.com/wp-content/uploads/2017/05/02163341/AND_LOGO_RGB_ON_WHITE.png" id="AndLogo" />
 				<h2>Bio</h2>
 			</div>
 		</div>
 	</section>
 
-	
+
 	<!--<section>
 		<div class="container-fluid bg-2 text-center">
 			<h3>Welcome to AND profiles!</h3>
 			<h4>Here you can review and update your profile to have all your skills and reflected and make a great first impression with clients!</h4>
 		</div>
 	</section> -->
-	
+
 	<div class="container">
+		<section>
+			
+			<div id="formFeedback" class="notSubmitted">
+					<i class="fas fa-check-circle"></i>
+				<h3>Your bio has been successfully submitted!</h3>
+			</div>
+		</section>
+
+
 		<section>
 			<!-- <img src="images/jenkins.png" alt="Mr Jenkins" height="150" width="150" class="jenkins"> -->
 			<form action="/uploadpicture" method="POST" enctype="multipart/form-data" id="imageForm">
 				<input type="file" name="picture" id="picture" accept="application/x-zip-compressed,image/*">
-				<label for="picture"><span>Choose a file</span></label>
+				<label for="picture">
+					<span>Choose a file</span>
+				</label>
 				<!-- <input class="form-control" type="text" name="description" placeholder="Description or Message"> -->
 				<input class="btn btn-primary" id="imageSubmit" type="submit" value="submit">
 			</form>
@@ -118,29 +132,29 @@
 
 				<button type="button" id="addExp">Add</button>
 
-			<div id="keySkills">
-				<section class="sectionBackground" id="keySkills">
-					<h4>Key Skills:</h4>
+				<div id="keySkills">
+					<section class="sectionBackground" id="keySkills">
+						<h4>Key Skills:</h4>
 						<div class="autocomplete form-group">
 							<input class="form-control" id="myInput" type="text" name="skills">
 							<div class="skillsHolder" id="skillz">
 							</div>
-					  	</div>
-				</section>
-			</div>
-			
-			<div id="tools">
-					<section class="sectionBackground" id="tools">
-						<h4>Tools:</h4>
-							<div class="form-group autocomplete">
-								<input class="form-control" id="myInputTools" type="text" name="tools">
-								<div class="toolsHolder" id="toolz">
-								</div>
-							</div>
+						</div>
 					</section>
 				</div>
 
-			<!-- <div>
+				<div id="tools">
+					<section class="sectionBackground" id="tools">
+						<h4>Tools:</h4>
+						<div class="form-group autocomplete">
+							<input class="form-control" id="myInputTools" type="text" name="tools">
+							<div class="toolsHolder" id="toolz">
+							</div>
+						</div>
+					</section>
+				</div>
+
+				<!-- <div>
 					<button type="button" id="submit">Submit</button>
 			</div> -->
 				<input type="submit" name="btnSubmit" id="btnSubmit" value="Submit">

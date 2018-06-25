@@ -2,10 +2,12 @@ const fs = require("fs");
 const readline = require("readline");
 const { google } = require("googleapis");
 const db = require("./db");
+const opn = require("opn");
+let googleSlideUrl;
 
-function quickstart() {
+function quickstart(nameToExport) {
+  console.log("#1: start of quickstart function");
   // BEGINNING OF AUTH SECTION
-
   /**
    * If modifying scopes, delete credentials.json.
    * Script will recreate it with new permissions.
@@ -85,6 +87,7 @@ function quickstart() {
   const fileId = "17kQGK9rBRDTYrzk2s4L-nA1qXUt4htg-UGgNoSBiAj0";
 
   function gapiDrive(auth) {
+    console.log("#2: start of gapidrive function");
     const drive = google.drive({ version: "v3", auth });
     drive.files.copy(
       {
@@ -106,121 +109,164 @@ function quickstart() {
         });
 
         function gapiSlides(auth) {
+          console.log("#3: start of gapiSlides function");
           const slides = google.slides({ version: "v1", auth });
 
           // Define what to subsitute
-          getProfiles().then(profiles => {
-            let requests;
-            profiles.forEach(profile => {
-              requests = [
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{name}",
-                      matchCase: true
-                    },
-                    replaceText: profile.name
-                  }
-                },
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{role}",
-                      matchCase: true
-                    },
-                    replaceText: profile.role
-                  }
-                },
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{linkedin}",
-                      matchCase: true
-                    },
-                    replaceText: profile.linkedin
-                  }
-                },
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{summary}",
-                      matchCase: true
-                    },
-                    replaceText: profile.summary
-                  }
-                },
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{titleLocation}",
-                      matchCase: true
-                    },
-                    replaceText: profile.experience.titleLocation
-                  }
-                },
-                {
-                  replaceAllText: {
-                    containsText: {
-                      text: "{roleSummary}",
-                      matchCase: true
-                    },
-                    replaceText: profile.experience.roleSummary
-                  }
-                }
-              ];
-            });
+          getProfiles(nameToExport).then(profiles => {
+            console.log("#4: .then after getProfiles function");
+            console.log("profiles in get profiles", profiles);
+            googleSlideUrl =
+              "https://docs.google.com/presentation/d/" + presentationCopyId;
 
+            const googleSlideRequest = generateGoogleSlideRequest(profiles[0]);
             // Execute the requests for this presentation.
             slides.presentations.batchUpdate(
               {
                 presentationId: presentationCopyId,
                 resource: {
-                  requests: requests
+                  requests: googleSlideRequest
                 }
               },
               (err, batchUpdateResponse) => {
                 if (err)
                   return console.log("The API returned an error: " + err);
                 const result = batchUpdateResponse;
-                // Count the total number of replacements made.
-                const numReplacements = 0;
-                for (var i = 0; i < result.replies.length; ++i) {
-                  numReplacements +=
-                    result.replies[i].replaceAllText.occurrencesChanged;
-                }
-                console.log(
-                  `Created presentation for ${customerName} with ID: ${presentationCopyId}`
-                );
-                console.log(`Replaced ${numReplacements} text instances`);
               }
             );
           });
         }
       }
     );
+    console.log("#5: end of gapidrive");
   }
 
-  function getProfiles() {
+  function getProfiles(exportedName) {
+    console.log("#6: Beginning of getProfiles function");
+    console.log("exportedName", exportedName);
     return new Promise((resolve, reject) => {
       db.connect().then(conn => {
         const appdb = conn.db("appdb");
         const collection = appdb.collection("profiles");
 
-        const profiles = collection.find({}).toArray((err, profiles) => {
-          if (err) {
-            reject(err);
-            return;
-          }
+        const profiles = collection
+          .find({ name: exportedName })
+          .toArray((err, profiles) => {
+            if (err) {
+              reject(err);
+              return;
+            }
 
-          resolve(profiles);
-          console.log(profiles);
-          return;
-        });
+            resolve(profiles);
+            console.log("profiles", profiles);
+            return;
+          });
       });
     });
   }
 
-  getProfiles();
+  console.log("nameToExport", nameToExport);
+  // getProfiles(nameToExport);
+  console.log("#7: end of quickstart function");
 }
 
-module.exports = quickstart;
+function generateGoogleSlideRequest(profile) {
+  console.log("#8: beginnging of googleslidesrequest function");
+  const googleSlideRequest = [];
+  console.log("profile", profile.experience);
+  profile.experience.forEach((experience, index) => {
+    googleSlideRequest.push({
+      replaceAllText: {
+        containsText: { text: "{titleLocation" + index + "}", matchCase: true },
+        replaceText: experience.titleLocation
+      }
+    });
+    googleSlideRequest.push({
+      replaceAllText: {
+        containsText: { text: "{summary" + index + "}", matchCase: true },
+        replaceText: experience.roleSummary
+      }
+    });
+  });
+
+  for (let i = 0; i < 8; i++) {
+    if (profile.skills[i]) {
+      googleSlideRequest.push({
+        replaceAllText: {
+          containsText: { text: "{skills" + i + "}", matchCase: true },
+          replaceText: profile.skills[i]
+        }
+      });
+    } else {
+      googleSlideRequest.push({
+        replaceAllText: {
+          containsText: { text: "{skills" + i + "}", matchCase: true },
+          replaceText: ""
+        }
+      });
+    }
+  }
+
+  for (let i = 0; i < 8; i++) {
+    if (profile.tools[i]) {
+      googleSlideRequest.push({
+        replaceAllText: {
+          containsText: { text: "{tools" + i + "}", matchCase: true },
+          replaceText: profile.tools[i]
+        }
+      });
+    } else {
+      googleSlideRequest.push({
+        replaceAllText: {
+          containsText: { text: "{tools" + i + "}", matchCase: true },
+          replaceText: ""
+        }
+      });
+    }
+  }
+
+  googleSlideRequest.push({
+    replaceAllText: {
+      containsText: {
+        text: "{name}",
+        matchCase: true
+      },
+      replaceText: profile.name
+    }
+  });
+
+  googleSlideRequest.push({
+    replaceAllText: {
+      containsText: {
+        text: "{role}",
+        matchCase: true
+      },
+      replaceText: profile.role
+    }
+  });
+
+  googleSlideRequest.push({
+    replaceAllText: {
+      containsText: {
+        text: "{linkedin}",
+        matchCase: true
+      },
+      replaceText: profile.linkedin
+    }
+  });
+
+  googleSlideRequest.push({
+    replaceAllText: {
+      containsText: {
+        text: "{summary}",
+        matchCase: true
+      },
+      replaceText: profile.summary
+    }
+  });
+  console.log("#9: end of googleslidesrequest function");
+  opn(googleSlideUrl);
+  return googleSlideRequest;
+}
+
+module.exports = { quickstart, generateGoogleSlideRequest };
