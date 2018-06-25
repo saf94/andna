@@ -44,13 +44,17 @@ document.getElementById("addExp").addEventListener("click", function() {
       expId +
       '"><h3>Experiences:</h3><div class="form-group"><label for="email">Role:</label><input type="role" class="form-control" id="role' +
       expId +
-      '" placeholder="Scrum master/PA/PD" name="role" maxlength="35">' +
+      '" placeholder="Scrum master/PA/PD" name="role' +
+      expId +
+      '" maxlength="35">' +
       '<div id="roleNum' +
       expId +
       '"class="counters"></div></div>' +
       '<div class="form-group"><label for="title">Location</label><input type="location" class="form-control" id="location' +
       expId +
-      '" placeholder="E.g. Avios/Halfords/BA" name="location" maxlength="25">' +
+      '" placeholder="E.g. Avios/Halfords/BA" name="location' +
+      expId +
+      '" maxlength="25">' +
       '<div id="locationNum' +
       expId +
       '"class="counters"></div></div>' +
@@ -58,7 +62,9 @@ document.getElementById("addExp").addEventListener("click", function() {
       '<div class="form-group"><label for="LinkedIn">Summary</label>' +
       '<textarea type="roleSummary" class="form-control" id="roleSummary' +
       expId +
-      '" placeholder="Summary of responsibilities" name="roleSummary" maxlength="520"></textarea>' +
+      '" placeholder="Summary of responsibilities" name="roleSummary' +
+      expId +
+      '" maxlength="520"></textarea>' +
       '<div id="sumNum' +
       expId +
       '" class="counters"></div>' +

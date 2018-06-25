@@ -76,8 +76,8 @@ router.get("/squads", function(req, res) {
 router.post("/formSubmit", function(req, res) {
   let experience = [
     {
-      titleLocation: `${req.body.role1} , ${req.body.location1}`,
-      roleSummary: req.body.roleSummary1
+      titleLocation: `${req.body.role} , ${req.body.location}`,
+      roleSummary: req.body.roleSummary
     }
   ];
 
@@ -94,6 +94,8 @@ router.post("/formSubmit", function(req, res) {
       roleSummary: req.body.roleSummary3
     });
   }
+  console.log("req.body", req.body);
+  console.log("experience", experience);
 
   const skills = req.body.skills.split(", ");
   const tools = req.body.tools.split(", ");
