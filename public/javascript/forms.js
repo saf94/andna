@@ -34,7 +34,7 @@ function removeTool(id) {
 }
 
 document.getElementById("addExp").addEventListener("click", function() {
-  if (document.getElementsByClassName("sectionBackground").length < 4) {
+  if (document.getElementsByClassName("sectionBackground").length < 6) {
     document.getElementById("newExperience").innerHTML +=
       '<section class="sectionBackground" id="experience' +
       expId +
@@ -47,24 +47,24 @@ document.getElementById("addExp").addEventListener("click", function() {
       '" placeholder="Summary of responsibilities" name="roleSummary"><button type="button" id="deleteExp" onclick="removeElement(' +
       expId +
       ')"> - </button></section>';
-    document.documentElement.innerHTML +=
-      '<script>validate(document.getElementById("roleSummary' +
-      expId +
-      '"), document.getElementById("sumNum' +
-      expId +
-      '"), 300);</script>';
-    document.documentElement.innerHTML +=
-      '<script>validate(document.getElementById("role' +
-      expId +
-      '"), document.getElementById("roleNum' +
-      expId +
-      '"), 35);</script>';
-    document.documentElement.innerHTML +=
-      '<script>validate(document.getElementById("location' +
-      expId +
-      '"), document.getElementById("locationNum' +
-      expId +
-      '"), 25);</script>';
+    // document.documentElement.innerHTML +=
+    //   '<script>validate(document.getElementById("roleSummary' +
+    //   expId +
+    //   '"), document.getElementById("sumNum' +
+    //   expId +
+    //   '"), 300);</script>';
+    // document.documentElement.innerHTML +=
+    //   '<script>validate(document.getElementById("role' +
+    //   expId +
+    //   '"), document.getElementById("roleNum' +
+    //   expId +
+    //   '"), 35);</script>';
+    // document.documentElement.innerHTML +=
+    //   '<script>validate(document.getElementById("location' +
+    //   expId +
+    //   '"), document.getElementById("locationNum' +
+    //   expId +
+    //   '"), 25);</script>';
     expId++;
   }
 });
